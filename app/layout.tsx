@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import "./globals.css";
@@ -25,26 +26,33 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Blocking script - runs before any content renders */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var savedTheme = localStorage.getItem('theme');
+                  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  var theme = savedTheme || (prefersDark ? 'dark' : 'light');
+                  if (theme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
       {/* min-h-screen ensures the background always covers at least the full window */}
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}>
-        
-        {/* Header - Fixed to 10% height */}
-        <header className="h-[10vh] flex items-center">
-          <Header />
-        </header>
-
-        {/* Main Content - Takes the middle 80% */}
-        {/* Added overflow-y-auto so long content stays inside the 80% area */}
-        <main className="h-[80vh] overflow-y-auto">
+        <Header />
+        <main className="flex-1 overflow-y-auto">
           {children}
         </main>
-
-        {/* Footer - Fixed to 10% height */}
-        <footer className="h-[10vh] flex items-center">
-          <Footer />
-        </footer>
-
+        <Footer />
       </body>
     </html>
   );

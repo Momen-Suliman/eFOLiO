@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import "./globals.css";
@@ -28,7 +27,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Blocking script - runs before any content renders */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -46,7 +44,6 @@ export default function RootLayout({
           }}
         />
       </head>
-      {/* min-h-screen ensures the background always covers at least the full window */}
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}>
         <Header />
         <main className="flex-1 overflow-y-auto">

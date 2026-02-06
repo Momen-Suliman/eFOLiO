@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Logo from "@/components/Logo";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
@@ -20,13 +21,12 @@ function Header(){
     ]
 
     useEffect(() => {
-        // Read the theme that was already applied by the blocking script
         const isDark = document.documentElement.classList.contains("dark");
         setTheme(isDark ? "dark" : "light");
     }, []);
 
     const toggleTheme = () => {
-        if (!theme) return; // Don't toggle before theme is initialized
+        if (!theme) return;
         
         const newTheme = theme === "light" ? "dark" : "light";
         setTheme(newTheme);
@@ -44,20 +44,12 @@ function Header(){
             initial={{ y: -100, opacity: 0 }} 
             animate={{ y: 0, opacity: 1 }} 
             transition={{ duration: 0.7, ease: "easeOut" }}
-            className="sticky top-0 z-50 w-full border-b border-border bg-background backdrop-blur-lg shadow-sm"
+            className="sticky top-0 z-50 w-full border-b border-border bg-background backdrop-blur-lg shadow-md"
         >
             <div className="container mx-auto px-6 py-4">
                 <div className="flex items-center justify-between">
-                    {/* Logo/Brand */}
-                    <Link href="/" className="group">
-                        <h1 className="text-4xl font-bold text-logo transition-colors hover:text-primary">
-                            eF O L iO
-                        </h1>
-                    </Link>
-
-
+                    <Logo />
                     <div className="flex items-center gap-4">
-                        {/* Navigation */}
                         <NavigationMenu>
                             <NavigationMenuList className="flex gap-1">
                                 {links.map((link) => {
@@ -78,22 +70,12 @@ function Header(){
                                                     {link.name}
                                                 </span>
                                                 
-                                                {/* Active indicator */}
                                                 {isActive && (
-                                                    <motion.div
-                                                        layoutId="active-pill"
-                                                        className="absolute cursor-pointer inset-0 rounded-2xl bg-ring/50 border border-primary"
-                                                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                                                    />
+                                                    <div className="absolute cursor-pointer inset-0 rounded-2xl bg-ring/50 border border-primary" />
                                                 )}
                                                 
-                                                {/* Hover indicator */}
                                                 {hoveredPath === link.href && !isActive && (
-                                                    <motion.div
-                                                        layoutId="hover-pill"
-                                                        className="absolute cursor-pointer inset-0 rounded-2xl bg-accent/50 border border-sidebar-ring"
-                                                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                                                    />
+                                                    <div className="absolute cursor-pointer inset-0 rounded-2xl bg-accent/50 border border-sidebar-ring" />
                                                 )}
                                             </Link>
                                         </NavigationMenuItem>
@@ -102,10 +84,8 @@ function Header(){
                             </NavigationMenuList>
                         </NavigationMenu>
 
-                        {/* Divider */}
                         <div className="h-6 w-px bg-border"></div>
 
-                        {/* Theme Toggle */}
                         <button
                             onClick={toggleTheme}
                             disabled={theme === null}
@@ -119,7 +99,7 @@ function Header(){
                                     rotate: theme === "dark" ? 180 : 0,
                                     opacity: theme === "dark" ? 0 : 1
                                 }}
-                                transition={{ duration: 0.2 }}
+                                transition={{ duration: 0.3 }}
                                 className="absolute"
                             >
                                 <Sun className="h-4 w-4 text-foreground group-hover:text-primary" />
@@ -131,7 +111,7 @@ function Header(){
                                     rotate: theme === "light" ? -180 : 0,
                                     opacity: theme === "light" ? 0 : 1
                                 }}
-                                transition={{ duration: 0.2 }}
+                                transition={{ duration: 0.3 }}
                                 className="absolute"
                             >
                                 <Moon className="h-4 w-4 text-foreground group-hover:text-primary" />

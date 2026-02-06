@@ -1,18 +1,16 @@
 "use client";
-import Link from "next/link";
+import Logo from "@/components/Logo";
 import { Github, Linkedin, Mail, Check } from "lucide-react";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { usePathname } from "next/navigation";
-import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from "./ui/navigation-menu";
 
 function Footer(){
     const currentYear = new Date().getFullYear();
-    const email = "somemail@gmail.com";
+    const email = "personal.momen@gmail.com";
     const [copied, setCopied] = useState(false);
     const socialLinks = [
-        { icon: Github, label: "GitHub", href: "https://github.com/yourusername" },
-        { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/in/yourusername" },
+        { icon: Github, label: "GitHub", href: "https://github.com" },
+        { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" },
     ];
 
     const copyEmail = () => {
@@ -25,11 +23,7 @@ function Footer(){
         <motion.footer initial={{ y: 100, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.7, ease: "easeOut" }}>
             <div className="container mx-auto px-6 py-4">
                 <div className="flex flex-col items-center justify-between">
-                    <Link href="/" className="group">
-                        <h1 className="text-lg font-bold text-logo transition-colors hover:text-primary">
-                            eF O L iO
-                        </h1>
-                    </Link>
+                    <Logo className="text-md"/>
                     <div className="h-px w-100 bg-border"></div>
                     <div className="flex items-center gap-4">
                         <div>

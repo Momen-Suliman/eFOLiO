@@ -51,7 +51,7 @@ function Header(){
                     {/* Logo/Brand */}
                     <Link href="/" className="group">
                         <h1 className="text-4xl font-bold text-logo transition-colors hover:text-primary">
-                            eF O L I O
+                            eF O L iO
                         </h1>
                     </Link>
 
@@ -82,7 +82,7 @@ function Header(){
                                                 {isActive && (
                                                     <motion.div
                                                         layoutId="active-pill"
-                                                        className="absolute cursor-pointer inset-0 rounded-lg bg-ring/50 border border-primary"
+                                                        className="absolute cursor-pointer inset-0 rounded-2xl bg-ring/50 border border-primary"
                                                         transition={{ type: "spring", stiffness: 380, damping: 30 }}
                                                     />
                                                 )}
@@ -91,7 +91,7 @@ function Header(){
                                                 {hoveredPath === link.href && !isActive && (
                                                     <motion.div
                                                         layoutId="hover-pill"
-                                                        className="absolute cursor-pointer inset-0 rounded-lg bg-accent/50 border border-sidebar-ring"
+                                                        className="absolute cursor-pointer inset-0 rounded-2xl bg-accent/50 border border-sidebar-ring"
                                                         transition={{ type: "spring", stiffness: 380, damping: 30 }}
                                                     />
                                                 )}

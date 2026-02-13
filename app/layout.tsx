@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Electronic Portfolio",
-  description: "This portfolio showcases academic projects & achievements.",
+  title: "eFOLiO",
+  description: "This Electronic Portfolio showcases academic projects & achievements.",
 };
 
 export default function RootLayout({

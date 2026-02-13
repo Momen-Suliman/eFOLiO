@@ -1,5 +1,6 @@
 "use client";
-import Logo from "@/components/Logo";
+import Logo from "@/components/icons/Logo";
+import ClipboardMail from "@/components/icons/clipboard-mail";
 import { Github, Linkedin, Mail, Check } from "lucide-react";
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -34,7 +35,7 @@ function Footer(){
                                 {copied ? (
                                     <Check className="h-4 w-4 text-green-500" />
                                 ) : (
-                                    <Mail className="h-4 w-4 text-foreground" />
+                                    <ClipboardMail className="h-4 w-4 text-foreground" />
                                 )}</button>
                         </div>
                         <div className="h-7 w-px bg-border"></div>

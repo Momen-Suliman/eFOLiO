@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import Logo from "@/components/Logo";
+import Logo from "@/components/icons/Logo";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";

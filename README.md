@@ -57,4 +57,4 @@ This platform serves as a high-performance 'shell' designed to enable Computer S
 ```
 
 ## 🤝 Contributions
-Once I finish setting up the app scaffold (and have my own version of the web-app launched), I will be open to any contribution requests and any potential feature requests. STAY TUNED!
+Once I finish setting up the app scaffold (and have my own version of the web-app launched), this app shell will be open to any contribution requests and any potential feature requests. STAY TUNED!

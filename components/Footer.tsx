@@ -10,7 +10,7 @@ function Footer(){
     const email = "personal.momen@gmail.com";
     const [copied, setCopied] = useState(false);
     const socialLinks = [
-        { icon: Github, label: "GitHub", href: "https://github.com" },
+        { icon: Github, label: "GitHub", href: "https://github.com/Momen-Suliman" },
         { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" },
     ];
 

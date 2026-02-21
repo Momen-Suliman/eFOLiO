@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { courses } from "@/data/courses";
 
-export default function CoursesPage() {
+export default function DegreePage() {
   const getGradeColor = (grade: string) => {
     switch (grade) {
       case "A+":
@@ -55,7 +55,7 @@ export default function CoursesPage() {
       transition={{ duration: 0.7, ease: "easeIn" }}
     >
       {courses.map((course) => (
-        <Card key={course.id} className="flex flex-col overflow-hidden transition-all hover:shadow-lg hover:border-primary/50">
+        <Card key={course.id} className="shadow-lg flex flex-col overflow-hidden transition-all hover:shadow-lg hover:border-primary/50">
           <div className="relative h-48 w-full bg-muted">
             <Image
               src={course.image}
@@ -69,7 +69,7 @@ export default function CoursesPage() {
             <div className="flex items-start justify-between gap-2">
               <div className="flex-1">
                 <CardTitle className="text-lg">{course.code}</CardTitle>
-                <CardDescription className="mt-1 text-primary">{course.name}</CardDescription>
+                <CardDescription className="text-primary">{course.name}</CardDescription>
               </div>
               <Badge className={getGradeColor(course.grade)} variant="outline">
                 {course.grade}

@@ -1,9 +1,26 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Card, CardContent, CardHeader, CardFooter, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardFooter,
+  CardTitle,
+} from "@/components/ui/card";
 import { leetcodes } from "@/data/leetcodes";
-import { PieChart, Pie, Cell, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
+import {
+  PieChart,
+  Pie,
+  Cell,
+  ResponsiveContainer,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+} from "recharts";
 import { Copy, ExternalLink } from "lucide-react";
 
 export default function LeetcodesPage() {
@@ -12,26 +29,57 @@ export default function LeetcodesPage() {
 
   // Calculate stats
   const totalProblems = leetcodes.length;
-  const solvedCount = leetcodes.filter(lc => lc.status === "Solved" || lc.status === "Reviewed").length;
-  
+  const solvedCount = leetcodes.filter(
+    (lc) => lc.status === "Solved" || lc.status === "Reviewed",
+  ).length;
+
   // Difficulty distribution
   const difficultyData = [
-    { name: "Simple", value: leetcodes.filter(lc => lc.difficulty === "Simple").length, color: "#22c55e" },
-    { name: "Complex", value: leetcodes.filter(lc => lc.difficulty === "Complex").length, color: "#f25500" },
+    {
+      name: "Simple",
+      value: leetcodes.filter((lc) => lc.difficulty === "Simple").length,
+      color: "#22c55e",
+    },
+    {
+      name: "Complex",
+      value: leetcodes.filter((lc) => lc.difficulty === "Complex").length,
+      color: "#f25500",
+    },
   ];
 
   // Category distribution
   const categoryData = [
-    { name: "Arrays", count: leetcodes.filter(lc => lc.category === "Arrays").length },
-    { name: "Linked Lists", count: leetcodes.filter(lc => lc.category === "Linked Lists").length },
-    { name: "Stacks", count: leetcodes.filter(lc => lc.category === "Stacks").length },
-    { name: "Queue", count: leetcodes.filter(lc => lc.category === "Queues").length },
-    { name: "Hash Tables", count: leetcodes.filter(lc => lc.category === "Hash Tables").length },
-    { name: "Trees", count: leetcodes.filter(lc => lc.category === "Trees").length },
-    { name: "Graphs", count: leetcodes.filter(lc => lc.category === "Graphs").length },
-  ].filter(cat => cat.count > 0);
+    {
+      name: "Arrays",
+      count: leetcodes.filter((lc) => lc.category === "Arrays").length,
+    },
+    {
+      name: "Linked Lists",
+      count: leetcodes.filter((lc) => lc.category === "Linked Lists").length,
+    },
+    {
+      name: "Stacks",
+      count: leetcodes.filter((lc) => lc.category === "Stacks").length,
+    },
+    {
+      name: "Queue",
+      count: leetcodes.filter((lc) => lc.category === "Queues").length,
+    },
+    {
+      name: "Hash Tables",
+      count: leetcodes.filter((lc) => lc.category === "Hash Tables").length,
+    },
+    {
+      name: "Trees",
+      count: leetcodes.filter((lc) => lc.category === "Trees").length,
+    },
+    {
+      name: "Graphs",
+      count: leetcodes.filter((lc) => lc.category === "Graphs").length,
+    },
+  ].filter((cat) => cat.count > 0);
 
-  const selectedProblemData = leetcodes.find(p => p.id === selectedProblem);
+  const selectedProblemData = leetcodes.find((p) => p.id === selectedProblem);
 
   const copyCode = () => {
     if (selectedProblemData?.code) {
@@ -43,23 +91,25 @@ export default function LeetcodesPage() {
 
   const openLeetCode = () => {
     if (selectedProblemData?.leetcodeUrl) {
-      window.open(selectedProblemData.leetcodeUrl, '_blank');
+      window.open(selectedProblemData.leetcodeUrl, "_blank");
     }
   };
 
   return (
     <div className="container mx-auto px-6 py-12">
-      <motion.div 
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+      <motion.div
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pointer-events-none"
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.7, ease: "easeIn" }}
       >
-        <div className="mb-8 pointer-events-none">
+        <div className="mb-8">
           <h1 className="text-4xl font-bold text-foreground mb-2 group-hover:text-logo transition-colors">
             LeetCode Problems
           </h1>
-          <p className="text-muted-foreground">My collection of solved algorithmic problems</p>
+          <p className="text-sm text-muted-foreground">
+            My collection of solved algorithmic problems
+          </p>
         </div>
       </motion.div>
 
@@ -74,7 +124,9 @@ export default function LeetcodesPage() {
           <Card className="min-h-[724px] max-h-[724px]">
             <CardHeader>
               <div className="flex items-center justify-between">
-                  <CardTitle className="text-xl pointer-events-none">Problems' List ({solvedCount}/{totalProblems})</CardTitle>
+                <CardTitle className="text-xl pointer-events-none">
+                  Problems' List ({solvedCount}/{totalProblems})
+                </CardTitle>
                 {selectedProblem && (
                   <button
                     onClick={() => setSelectedProblem(null)}
@@ -91,35 +143,55 @@ export default function LeetcodesPage() {
                   key={problem.id}
                   onClick={() => setSelectedProblem(problem.id)}
                   className={`rounded-lg border overflow-hidden hover:border-primary/50 transition-all cursor-pointer ${
-                    selectedProblem === problem.id ? 'border-primary' : 'border-border'
+                    selectedProblem === problem.id
+                      ? "border-primary"
+                      : "border-border"
                   }`}
                 >
                   <div className="bg-background/50 p-4 flex-2 flex items-center min-h-15">
-                    <h3 className="text-lg font-medium text-foreground">{problem.title}</h3>
+                    <h3 className="text-lg font-medium text-foreground">
+                      {problem.title}
+                    </h3>
                   </div>
 
                   <div className="h-px w-full bg-border"></div>
 
                   <div className="bg-background p-4 flex-1 grid grid-cols-3 gap-3 text-sm">
                     <div className="rounded-lg border border-border bg-muted/30 flex flex-row items-center justify-center gap-1 p-2">
-                      <span className="text-muted-foreground text-xs">Difficulty</span>
-                      <span className={problem.difficulty === "Simple" ? "text-green-600 dark:text-green-400 font-medium" : "text-[#f25500] dark:text-[#f25500] font-medium"}>
+                      <span className="text-muted-foreground text-xs">
+                        Difficulty
+                      </span>
+                      <span
+                        className={
+                          problem.difficulty === "Simple"
+                            ? "text-green-600 dark:text-green-400 font-medium"
+                            : "text-[#f25500] dark:text-[#f25500] font-medium"
+                        }
+                      >
                         {problem.difficulty}
                       </span>
                     </div>
                     <div className="rounded-lg border border-border bg-muted/30 flex flex-row items-center justify-center gap-1 p-2">
-                      <span className="text-muted-foreground text-xs">Category</span>
-                      <span className="text-foreground font-medium">{problem.category}</span>
+                      <span className="text-muted-foreground text-xs">
+                        Category
+                      </span>
+                      <span className="text-foreground font-medium">
+                        {problem.category}
+                      </span>
                     </div>
                     <div className="rounded-lg border border-border bg-muted/30 flex flex-row items-center justify-center gap-1 p-2">
-                      <span className="text-muted-foreground text-xs">Status</span>
-                      <span className={
-                        problem.status === "Solved"
-                          ? "text-blue-600 dark:text-blue-400 font-medium"
-                          : problem.status === "Attempted"
-                          ? "text-yellow-600 dark:text-yellow-400 font-medium"
-                          : "text-purple-600 dark:text-purple-400 font-medium"
-                      }>
+                      <span className="text-muted-foreground text-xs">
+                        Status
+                      </span>
+                      <span
+                        className={
+                          problem.status === "Solved"
+                            ? "text-blue-600 dark:text-blue-400 font-medium"
+                            : problem.status === "Attempted"
+                              ? "text-yellow-600 dark:text-yellow-400 font-medium"
+                              : "text-purple-600 dark:text-purple-400 font-medium"
+                        }
+                      >
                         {problem.status}
                       </span>
                     </div>
@@ -166,11 +238,11 @@ export default function LeetcodesPage() {
               <Card className="min-h-[225px] max-h-[225px]">
                 <CardHeader>
                   <div className="flex items-center justify-between">
-                    <CardTitle className="pointer-events-none">Implementation</CardTitle>
+                    <CardTitle className="pointer-events-none">
+                      Implementation
+                    </CardTitle>
                     <div className="flex gap-2">
-                      <button
-                        className="flex items-center gap-2 px-3 py-1.5 text-xs rounded-md border border-border bg-background hover:bg-accent transition-colors pointer-events-none"
-                      >
+                      <button className="flex items-center gap-2 px-3 py-1.5 text-xs rounded-md border border-border bg-background hover:bg-accent transition-colors pointer-events-none">
                         Python3
                       </button>
                       <button
@@ -245,21 +317,32 @@ export default function LeetcodesPage() {
                       {/* Legend */}
                       <div className="flex-1 flex flex-col rounded-lg border border-border bg-background/50 py-5 justify-center items-center space-y-7">
                         {difficultyData.map((item) => (
-                          <div key={item.name} className="flex items-center gap-2">
-                            <div 
-                              className="w-3 h-3 rounded-full" 
+                          <div
+                            key={item.name}
+                            className="flex items-center gap-2"
+                          >
+                            <div
+                              className="w-3 h-3 rounded-full"
                               style={{ backgroundColor: item.color }}
                             />
-                            <span className="text-md text-foreground font-medium">{item.name}</span>
-                            <span className="text-sm text-muted-foreground">({item.value})</span>
+                            <span className="text-md text-foreground font-medium">
+                              {item.name}
+                            </span>
+                            <span className="text-sm text-muted-foreground">
+                              ({item.value})
+                            </span>
                           </div>
                         ))}
                       </div>
 
                       {/* Total Problems */}
                       <div className="flex-1 flex flex-col rounded-lg border border-border bg-background/50 py-5 justify-center items-center space-y-7">
-                        <p className="text-2xl font-bold text-foreground">{totalProblems}</p>
-                        <p className="text-xs text-muted-foreground">Total Problems</p>
+                        <p className="text-2xl font-bold text-foreground">
+                          {totalProblems}
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          Total Problems
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -274,23 +357,30 @@ export default function LeetcodesPage() {
                 <CardContent>
                   <ResponsiveContainer width="100%" height={300}>
                     <BarChart data={categoryData}>
-                      <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
-                      <XAxis 
-                        dataKey="name" 
-                        angle={-45} 
-                        textAnchor="end" 
+                      <CartesianGrid
+                        strokeDasharray="3 3"
+                        stroke="var(--border)"
+                      />
+                      <XAxis
+                        dataKey="name"
+                        angle={-45}
+                        textAnchor="end"
                         height={100}
                         tick={{ fill: "var(--primary)", fontSize: 14 }}
                       />
                       <YAxis tick={{ fill: "var(--primary)" }} />
-                      <Tooltip 
-                        contentStyle={{ 
-                          backgroundColor: "var(--card)", 
+                      <Tooltip
+                        contentStyle={{
+                          backgroundColor: "var(--card)",
                           border: "1px solid var(--border)",
-                          borderRadius: "8px"
+                          borderRadius: "8px",
                         }}
                       />
-                      <Bar dataKey="count" fill="var(--input)" radius={[8, 8, 0, 0]} />
+                      <Bar
+                        dataKey="count"
+                        fill="var(--input)"
+                        radius={[8, 8, 0, 0]}
+                      />
                     </BarChart>
                   </ResponsiveContainer>
                 </CardContent>

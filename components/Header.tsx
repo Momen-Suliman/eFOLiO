@@ -4,17 +4,23 @@ import Logo from "@/components/icons/Logo";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
-import { Moon, Sun } from "lucide-react";
+import { Github, Menu, Moon, Sun } from "lucide-react";
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuList,
 } from "./ui/navigation-menu";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "./ui/sheet";
+import { resume } from "@/data/resume";
 
 function Header() {
   const pathname = usePathname();
   const [hoveredPath, setHoveredPath] = useState<string | null>(null);
   const [theme, setTheme] = useState<"light" | "dark" | null>(null);
+  const [sheetOpen, setSheetOpen] = useState(false);
+  const socialLinks = [
+    { icon: Github, label: "GitHub", href: `${resume.information[0].github}` },
+  ];
 
   const links = [
     { name: "Home", href: "/" },
@@ -54,43 +60,89 @@ function Header() {
         <div className="flex items-center justify-between">
           <Logo />
           <div className="flex items-center gap-4">
-            <NavigationMenu>
-              <NavigationMenuList className="flex gap-1">
-                {links.map((link) => {
-                  const isActive = pathname === link.href;
-                  return (
-                    <NavigationMenuItem key={link.href}>
-                      <Link
-                        href={link.href}
-                        onMouseEnter={() => setHoveredPath(link.href)}
-                        onMouseLeave={() => setHoveredPath(null)}
-                        className="relative cursor-pointer px-4 py-2 text-sm font-medium transition-colors"
-                      >
-                        <span
-                          className={`relative cursor-pointer z-10 ${
-                            isActive
-                              ? "text-primary-foreground"
-                              : "text-foreground hover:text-primary"
-                          }`}
+            <div className="hidden md:block">
+              <NavigationMenu>
+                <NavigationMenuList className="flex gap-1">
+                  {links.map((link) => {
+                    const isActive = pathname === link.href;
+                    return (
+                      <NavigationMenuItem key={link.href}>
+                        <Link
+                          href={link.href}
+                          onMouseEnter={() => setHoveredPath(link.href)}
+                          onMouseLeave={() => setHoveredPath(null)}
+                          className="relative cursor-pointer px-4 py-2 text-sm font-medium transition-colors"
                         >
-                          {link.name}
-                        </span>
+                          <span
+                            className={`relative cursor-pointer z-10 ${
+                              isActive
+                                ? "text-primary-foreground"
+                                : "text-foreground hover:text-primary"
+                            }`}
+                          >
+                            {link.name}
+                          </span>
 
-                        {isActive && (
-                          <div className="absolute cursor-pointer inset-0 rounded-2xl bg-ring/50 border border-primary" />
-                        )}
+                          {isActive && (
+                            <div className="absolute cursor-pointer inset-0 rounded-2xl bg-ring/50 border border-primary" />
+                          )}
 
-                        {hoveredPath === link.href && !isActive && (
-                          <div className="absolute cursor-pointer inset-0 rounded-2xl bg-accent/50 border border-sidebar-ring" />
-                        )}
+                          {hoveredPath === link.href && !isActive && (
+                            <div className="absolute cursor-pointer inset-0 rounded-2xl bg-accent/50 border border-sidebar-ring" />
+                          )}
+                        </Link>
+                      </NavigationMenuItem>
+                    );
+                  })}
+                </NavigationMenuList>
+              </NavigationMenu>
+            </div>
+
+            <div className="md:hidden">
+              <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
+                <SheetTrigger className="p-2 hover:bg-accent rounded-md transition-colors">
+                  <Menu className="h-5.5 w-5.5" />
+                </SheetTrigger>
+                <SheetContent
+                  side="right"
+                  className="bg-background/30 backdrop-blur-sm h-fit w-2/3 border-b rounded-2xl mr-[1.5vh] mt-[1.5vh] flex flex-col p-0"
+                >
+                  <SheetTitle className="bg-ring/20 text-xl text-logo tracking-wider font-medium border-b rounded-t-2xl py-2 items-center justify-center text-center">
+                    Main Menu
+                  </SheetTitle>
+                  <nav className="flex flex-col flex-1 gap-4 items-center justify-evenly pb-5">
+                    {links.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        onClick={() => setSheetOpen(false)}
+                        className={`text-lg tracking-wide items-center justify-center text-center pb-0.5 ${pathname === link.href ? "text-background/80 font-bold rounded-2xl bg-ring/50 border border-primary px-2" : "text-foreground font-light"}`}
+                      >
+                        {link.name}
                       </Link>
-                    </NavigationMenuItem>
-                  );
-                })}
-              </NavigationMenuList>
-            </NavigationMenu>
+                    ))}
+                  </nav>
+                </SheetContent>
+              </Sheet>
+            </div>
 
             <div className="h-6 w-px bg-border"></div>
+
+            {socialLinks.map((social) => {
+              const Icon = social.icon;
+              return (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-9 w-9 items-center justify-center rounded-md border border-border bg-secondary/50 transition-colors hover:bg-accent hover:border-accent-foreground/20 disabled:opacity-50"
+                  aria-label={social.label}
+                >
+                  <Icon className="h-4 w-4 text-foreground" />
+                </a>
+              );
+            })}
 
             <button
               onClick={toggleTheme}

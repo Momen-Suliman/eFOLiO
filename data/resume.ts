@@ -5,7 +5,8 @@ export interface Resume {
 }
 
 export interface Information {
-  name: string;
+  firstName: string;
+  lastName: string;
   title: string;
   email: string;
   phone: string;
@@ -31,8 +32,9 @@ export interface Skills {
 export const resume: Resume = {
   information: [
     {
-      name: "Momen Suliman",
-      title: "Software Engineer Student",
+      firstName: "Momen",
+      lastName: "Suliman",
+      title: "Software Engineering Student",
       email: "personal.momen@gmail.com",
       phone: "720-751-3617",
       linkedin: "https://www.linkedin.com",
@@ -40,7 +42,7 @@ export const resume: Resume = {
       resumeFile: "/Momen_Suliman_Resume.pdf",
       portraitFile: "/images/portrait.jpg",
       summary:
-        "Aspiring software engineer with a strong foundation in computer science principles and a passion for developing innovative solutions. Proficient in multiple programming languages and experienced in full-stack web development, distributed computing, & Database Systems. Eager to contribute to impactful projects and continuously learn in a dynamic tech environment.",
+        "Independently architected and documented a full open- source project from the ground up — no team, no handholding, just a clear vision and the discipline to build it. Stepped up as the de facto lead on a team project, coordinating schema, code, and testing across contributors to deliver a polished result to senior colleagues.",
     },
   ],
   education: [

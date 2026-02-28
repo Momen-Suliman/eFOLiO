@@ -7,19 +7,20 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-
-function Logo({className = "text-4xl"}:{ className?: string}){
-    return (
-        <Link href="/" className="group">
-            <h1 className={`
+function Logo({ className = "text-4xl" }: { className?: string }) {
+  return (
+    <Link href="/" className="group">
+      <h1
+        className={`
                 ${geistSans.variable} 
                 ${className} 
-                font-sans font-bold text-logo transition-colors hover:text-primary
-            `}>
-                eF O L iO
-            </h1>
-        </Link>
-    );
+                font-sans font-extralight text-logo transition-colors hover:text-primary
+            `}
+      >
+        eF O L iO
+      </h1>
+    </Link>
+  );
 }
 
 export default Logo;

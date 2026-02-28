@@ -16,7 +16,7 @@ const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 16 },
   animate: { opacity: 1, y: 0 },
   transition: {
-    duration: 0.6,
+    duration: 0.65,
     ease: [0.22, 1, 0.36, 1] as const,
     delay,
   },
@@ -31,10 +31,10 @@ export default function ResumePage() {
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pointer-events-none"
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.7, ease: "easeIn" }}
+        transition={{ duration: 0.65, ease: "easeOut" }}
       >
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-foreground mb-2">
+          <h1 className="text-4xl font-semibold text-foreground mb-2">
             Personal Profile
           </h1>
           <p className="text-sm text-muted-foreground">
@@ -43,36 +43,33 @@ export default function ResumePage() {
         </div>
       </motion.div>
 
-      <Card className="shadow-lg flex flex-col p-5 bg-linear-to-b from-card/80 via-transparent/50 to-transparent/50 overflow-hidden transition-all">
-        {/* ── HEADER: Portrait + Name + Contact ── */}
+      <Card className="shadow-lg flex flex-col p-5 bg-linear-to-b from-ransparent/50 via-transparent/50 to-card/60 overflow-hidden transition-all">
         <CardHeader className="p-0">
           <motion.section
             className="flex flex-col sm:flex-row items-start sm:items-center gap-8 mb-12 pb-5 border-b border-border"
-            {...fadeUp(0)}
+            {...fadeUp(0.1)}
           >
-            {/* Portrait */}
             <div className="relative shrink-0 w-36 h-36 rounded-[33%] overflow-hidden bg-muted ring-2 ring-border pointer-events-none">
               {info.portraitFile ? (
                 <Image
                   src={`${info.portraitFile}`}
-                  alt={info.name}
+                  alt={info.firstName}
                   fill
                   className="object-cover"
                 />
               ) : (
                 <div className="w-full h-full flex items-center justify-center text-2xl font-semibold text-muted-foreground">
-                  {info.name
+                  {info.firstName
                     .split(" ")
-                    .map((n) => n[0])
+                    .map((f) => f[0])
                     .join("")}
                 </div>
               )}
             </div>
 
-            {/* Name + title + contact row */}
             <div dir="rtl" className="flex-1 min-w-0">
-              <h1 className="text-3xl font-bold text-foreground tracking-tight pointer-events-none">
-                {info.name}
+              <h1 className="text-3xl font-semibold text-foreground tracking-tight pointer-events-none">
+                {info.firstName} {info.lastName}
               </h1>
               <p className="text-base text-muted-foreground mt-1 mb-4 pointer-events-none">
                 {info.title}
@@ -134,15 +131,14 @@ export default function ResumePage() {
           </motion.section>
         </CardHeader>
 
-        {/* ── TWO-COLUMN BODY ── */}
         <CardContent className="p-0 flex-1">
           <div className="flex flex-col gap-10">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7, ease: "easeIn" }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
             >
-              <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4 pb-2 border-b border-border pointer-events-none">
+              <h2 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4 pb-2 border-b border-border pointer-events-none">
                 Academic Experience
               </h2>
               <p className="text-sm leading-relaxed text-muted-foreground pb-5">
@@ -157,13 +153,11 @@ export default function ResumePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {/* LEFT col (2/3): Summary + Education */}
             <div className="md:col-span-2 flex flex-col gap-10">
-              {/* About */}
-              <motion.section {...fadeUp(0.08)}>
+              <motion.section {...fadeUp(0.18)}>
                 <Card className="bg-background/50 pointer-events-none">
                   <CardHeader>
-                    <CardTitle className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                    <CardTitle className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
                       About
                     </CardTitle>
                   </CardHeader>
@@ -175,11 +169,10 @@ export default function ResumePage() {
                 </Card>
               </motion.section>
 
-              {/* Education */}
-              <motion.section {...fadeUp(0.14)}>
+              <motion.section {...fadeUp(0.26)}>
                 <Card className="bg-background/50">
                   <CardHeader>
-                    <CardTitle className="text-xs font-semibold uppercase tracking-widest text-muted-foreground pointer-events-none">
+                    <CardTitle className="text-xs font-bold uppercase tracking-widest text-muted-foreground pointer-events-none">
                       Education
                     </CardTitle>
                   </CardHeader>
@@ -187,7 +180,7 @@ export default function ResumePage() {
                     {resume.education.map((edu, i) => (
                       <div key={i} className="flex flex-col gap-3">
                         <div className="flex justify-between items-start gap-4">
-                          <p className="text-md font-semibold text-foreground">
+                          <p className="text-md font-medium text-foreground">
                             {edu.institution}
                           </p>
                           <Badge
@@ -218,18 +211,17 @@ export default function ResumePage() {
               </motion.section>
             </div>
 
-            {/* RIGHT col (1/3): Skills */}
-            <motion.aside {...fadeUp(0.2)}>
+            <motion.aside {...fadeUp(0.32)}>
               <Card className="bg-background/50 pointer-events-none">
                 <CardHeader>
-                  <CardTitle className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                  <CardTitle className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
                     Skills
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="flex flex-col gap-6">
                   {resume.skills.map((group, i) => (
                     <div key={i}>
-                      <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-2.5">
+                      <p className="text-xs font-medium italic uppercase tracking-widest text-muted-foreground mb-2.5">
                         {group.category}
                       </p>
                       <div className="flex flex-wrap gap-2">
@@ -249,7 +241,7 @@ export default function ResumePage() {
             </motion.aside>
           </div>
         </CardContent>
-        <CardFooter className="p-0 border-0 mt-10">
+        <CardFooter className="p-0 border-0 mt-10 cursor-default">
           <p className="text-xs text-muted-foreground text-center w-full">
             For more details, visit our other pages{" "}
             <a href="/degree" className="text-primary hover:underline">

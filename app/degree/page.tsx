@@ -50,10 +50,10 @@ export default function DegreePage() {
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pointer-events-none"
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.7, ease: "easeIn" }}
+        transition={{ duration: 0.65, ease: "easeOut" }}
       >
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-foreground mb-2">
+          <h1 className="text-4xl font-semibold text-foreground mb-2">
             Courses Taken
           </h1>
           <p className="text-sm text-muted-foreground">
@@ -62,60 +62,66 @@ export default function DegreePage() {
         </div>
       </motion.div>
 
-      <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        initial={{ opacity: 0, scale: 0.97 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.7, ease: "easeIn" }}
-      >
-        {courses.map((course) => (
-          <Card
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {courses.map((course, index) => (
+          <motion.div
             key={course.id}
-            className="shadow-lg flex flex-col overflow-hidden transition-all hover:shadow-lg hover:border-primary/50"
+            initial={{ opacity: 0, scale: 0.97 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              duration: 0.7,
+              ease: "easeIn",
+              delay: 0.2 + index * 0.09,
+            }}
           >
-            <div className="relative h-48 w-full bg-muted">
-              <Image
-                src={course.image}
-                alt={course.name}
-                fill
-                className="object-cover"
-              />
-            </div>
-
-            <CardHeader>
-              <div className="flex items-start justify-between gap-2">
-                <div className="flex-1">
-                  <CardTitle className="text-lg">{course.code}</CardTitle>
-                  <CardDescription className="text-primary">
-                    {course.name}
-                  </CardDescription>
-                </div>
-                <Badge
-                  className={getGradeColor(course.grade)}
-                  variant="outline"
-                >
-                  {course.grade}
-                </Badge>
+            <Card
+              key={course.id}
+              className="shadow-lg flex flex-col pb-0 overflow-hidden transition-all hover:shadow-lg hover:border-primary/50"
+            >
+              <div className="relative h-48 w-full bg-muted">
+                <Image
+                  src={course.image}
+                  alt={course.name}
+                  fill
+                  className="object-cover"
+                />
               </div>
-            </CardHeader>
 
-            <CardContent className="flex-1">
-              <p className="text-sm text-muted-foreground">
-                {truncateDescription(course.description, 250)}
-              </p>
-            </CardContent>
+              <CardHeader>
+                <div className="flex items-start justify-between gap-2">
+                  <div className="flex-1">
+                    <CardTitle className="text-lg">{course.code}</CardTitle>
+                    <CardDescription className="text-primary">
+                      {course.name}
+                    </CardDescription>
+                  </div>
+                  <Badge
+                    className={getGradeColor(course.grade)}
+                    variant="outline"
+                  >
+                    {course.grade}
+                  </Badge>
+                </div>
+              </CardHeader>
 
-            <CardFooter className="flex items-center justify-between border-t pt-4">
-              <Badge variant="secondary" className="text-xs">
-                {course.category}
-              </Badge>
-              <span className="text-xs text-muted-foreground">
-                {course.semester}
-              </span>
-            </CardFooter>
-          </Card>
+              <CardContent className="flex-1 min-h-30">
+                <p className="text-sm text-muted-foreground">
+                  {truncateDescription(course.description, 250)}
+                </p>
+              </CardContent>
+
+              <CardFooter className="flex items-center justify-between border-t pt-4 pb-6 bg-primary/3">
+                <Badge variant="secondary" className="text-xs">
+                  {course.category}
+                </Badge>
+                <span className="text-xs text-muted-foreground">
+                  {course.semester}
+                </span>
+              </CardFooter>
+            </Card>
+          </motion.div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }

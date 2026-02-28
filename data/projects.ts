@@ -12,7 +12,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: "1",
-    title: "Full-Stack Task Manager",
+    title: "Full-Stack CRUD App",
     description:
       "A production-ready CRUD application featuring secure authentication and relational database management.",
     tools: ["Next.js", "Supabase", "Prisma", "Tailwind"],
@@ -46,7 +46,7 @@ export const projects: Project[] = [
     description:
       "A backend Java system implementing custom generic data structures for high-efficiency account and queue management.",
     tools: ["Java", "OOP", "Unit Testing"],
-    githubUrl: "https://github.com/yourusername/banking-system",
+    githubUrl: "https://github.com/Momen-Suliman/Banking-System",
     featured: false,
   },
   {
@@ -55,7 +55,7 @@ export const projects: Project[] = [
     description:
       "A Python-based data mining tool that programmatically parses HTML trees to extract and structure global metadata.",
     tools: ["Python", "BeautifulSoup", "Requests"],
-    githubUrl: "https://github.com/yourusername/country-scraper",
+    githubUrl: "https://github.com/Momen-Suliman/Simple-Web-Scrapper",
     featured: false,
   },
   {
@@ -64,7 +64,7 @@ export const projects: Project[] = [
     description:
       "A custom language parser built for academic research into compiler design.",
     tools: ["Python", "Algorithms"],
-    githubUrl: "https://github.com/yourname/parser",
+    githubUrl: "https://github.com/Momen-Suliman/Recursive-Descent-Parser",
     featured: false,
   },
 ];

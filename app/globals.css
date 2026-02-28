@@ -62,50 +62,41 @@
 :root {
   --radius: 0.625rem;
 
-  /* Dimmed Background - Not pure white, more of a "Gallery" silk */
   --background: oklch(0.94 0.01 240);
   --foreground: oklch(0.25 0.02 240);
 
-  /* Cards - Lighter than background to create a "lifted" silver effect */
   --card: oklch(76.937% 0.02896 229.42);
   --card-foreground: oklch(0.2 0.02 240);
 
   --popover: oklch(0.97 0.005 240);
   --popover-foreground: oklch(0.2 0.02 240);
 
-  /* Primary - Deep Slate: The anchor of the silver range */
   --primary: oklch(0.35 0.04 240);
   --primary-foreground: oklch(0.98 0.005 240);
 
-  /* Secondary - True Silver: Visible depth */
   --secondary: oklch(0.88 0.02 240);
   --secondary-foreground: oklch(0.3 0.03 240);
 
-  /* Muted - Soft Fog: For subtle UI elements */
   --muted: oklch(0.9 0.015 240);
   --muted-foreground: oklch(0.45 0.02 240);
 
-  /* Accent - Polished Chrome: High chroma for interaction */
   --accent: oklch(0.85 0.03 240);
   --accent-foreground: oklch(0.2 0.02 240);
 
   --destructive: oklch(0.577 0.245 27.325);
 
-  /* Borders & Inputs - Defined edges like brushed metal */
   --border: oklch(0.82 0.025 240);
   --input: oklch(0.82 0.025 240);
   --ring: oklch(0.35 0.04 240);
 
   --logo: oklch(0.55 0.03 240);
 
-  /* Chart Colors - Synced to the Silver/Blue aesthetic */
   --chart-1: oklch(0.5 0.1 240);
   --chart-2: oklch(0.65 0.08 240);
   --chart-3: oklch(0.4 0.06 240);
   --chart-4: oklch(0.75 0.05 240);
   --chart-5: oklch(0.85 0.04 240);
 
-  /* Sidebar - Slightly "cooler" and deeper than main background */
   --sidebar: oklch(0.92 0.015 240);
   --sidebar-foreground: oklch(0.25 0.02 240);
   --sidebar-primary: oklch(0.35 0.04 240);
@@ -117,7 +108,7 @@
 }
 
 .dark {
-  --background: oklch(14.065% 0.0181 70.482);
+  --background: oklch(14% 0.0181 70.482);
   --foreground: oklch(92% 0.015 50);
 
   --card: oklch(18% 0.025 40);

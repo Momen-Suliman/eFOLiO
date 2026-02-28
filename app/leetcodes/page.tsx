@@ -21,19 +21,17 @@ import {
   Tooltip,
   CartesianGrid,
 } from "recharts";
-import { Copy, ExternalLink } from "lucide-react";
+import { Check, Copy, ExternalLink } from "lucide-react";
 
 export default function LeetcodesPage() {
   const [selectedProblem, setSelectedProblem] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
 
-  // Calculate stats
   const totalProblems = leetcodes.length;
   const solvedCount = leetcodes.filter(
     (lc) => lc.status === "Solved" || lc.status === "Reviewed",
   ).length;
 
-  // Difficulty distribution
   const difficultyData = [
     {
       name: "Simple",
@@ -47,7 +45,6 @@ export default function LeetcodesPage() {
     },
   ];
 
-  // Category distribution
   const categoryData = [
     {
       name: "Arrays",
@@ -101,10 +98,10 @@ export default function LeetcodesPage() {
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pointer-events-none"
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.7, ease: "easeIn" }}
+        transition={{ duration: 0.65, ease: "easeOut" }}
       >
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-foreground mb-2 group-hover:text-logo transition-colors">
+          <h1 className="text-4xl font-semibold text-foreground mb-2 group-hover:text-logo transition-colors">
             LeetCode Problems
           </h1>
           <p className="text-sm text-muted-foreground">
@@ -113,19 +110,22 @@ export default function LeetcodesPage() {
         </div>
       </motion.div>
 
-      <motion.div
-        className="grid grid-cols-1 lg:grid-cols-[50%_50%] gap-6"
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-      >
-        {/* Left Column - Problems List */}
-        <div className="lg:col-span-1 space-y-3 flex flex-col">
-          <Card className="min-h-181 max-h-181 bg-background/50">
+      <div className="grid grid-cols-1 lg:grid-cols-[50%_50%] gap-6">
+        <motion.div
+          className="lg:col-span-1 space-y-3 flex flex-col"
+          initial={{ opacity: 0, x: -60 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{
+            duration: 1.2,
+            ease: [0.22, 1, 0.36, 1],
+            delay: 0.1,
+          }}
+        >
+          <Card className="min-h-181 max-h-181 bg-background/30">
             <CardHeader>
               <div className="flex items-center justify-between">
                 <CardTitle className="text-xl pointer-events-none">
-                  Problems' List ({solvedCount}/{totalProblems})
+                  Problems' List
                 </CardTitle>
                 {selectedProblem && (
                   <button
@@ -203,15 +203,12 @@ export default function LeetcodesPage() {
               Click on a problem to view details
             </CardFooter>
           </Card>
-        </div>
+        </motion.div>
 
-        {/* Right Column - Conditional Content */}
         <div className="space-y-6">
           {selectedProblem ? (
-            // Detail View - Show selected problem details
             <>
-              {/* Problem Description */}
-              <Card className="min-h-56.25 max-h-56.25 bg-background/50 pointer-events-none">
+              <Card className="min-h-56.25 max-h-56.25 bg-background/30 pointer-events-none">
                 <CardHeader>
                   <CardTitle>Problem Description</CardTitle>
                 </CardHeader>
@@ -222,8 +219,7 @@ export default function LeetcodesPage() {
                 </CardContent>
               </Card>
 
-              {/* My Solution (Approach) */}
-              <Card className="min-h-56.25 max-h-56.25 bg-background/50 pointer-events-none">
+              <Card className="min-h-56.25 max-h-56.25 bg-background/30 pointer-events-none">
                 <CardHeader>
                   <CardTitle>My Solution</CardTitle>
                 </CardHeader>
@@ -234,8 +230,7 @@ export default function LeetcodesPage() {
                 </CardContent>
               </Card>
 
-              {/* Code Implementation */}
-              <Card className="min-h-56.25 max-h-56.25 bg-background/50">
+              <Card className="min-h-56.25 max-h-56.25 bg-background/30">
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <CardTitle className="pointer-events-none">
@@ -250,7 +245,10 @@ export default function LeetcodesPage() {
                         className="flex items-center gap-2 px-3 py-1.5 text-xs rounded-md border border-border bg-accent hover:bg-sidebar-ring transition-colors cursor-pointer"
                       >
                         {copied ? (
-                          <>✓ Copied</>
+                          <>
+                            <Check className="h-4 w-4 text-green-500" />
+                            Copied
+                          </>
                         ) : (
                           <>
                             <Copy className="h-3 w-3" />
@@ -278,117 +276,138 @@ export default function LeetcodesPage() {
               </Card>
             </>
           ) : (
-            // Overview - Show stats
             <>
-              {/* Difficulty Distribution */}
-              <Card className="min-h-87.5 max-h-87.5 bg-background/50 pointer-events-none">
-                <CardHeader>
-                  <CardTitle>Difficulty Distribution</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-center gap-4">
-                    {/* Left 66% - Pie Chart */}
-                    <div className="flex-2 rounded-lg border border-border bg-background/50">
-                      <ResponsiveContainer width="100%" height={250}>
-                        <PieChart>
-                          <Pie
-                            data={difficultyData}
-                            cx="50%"
-                            cy="50%"
-                            labelLine={true}
-                            label={(props: any) => {
-                              const { percent } = props;
-                              return `${(percent * 100).toFixed(0)}%`;
-                            }}
-                            outerRadius={80}
-                            fill="#8884d8"
-                            dataKey="value"
-                          >
-                            {difficultyData.map((entry, index) => (
-                              <Cell key={`cell-${index}`} fill={entry.color} />
-                            ))}
-                          </Pie>
-                        </PieChart>
-                      </ResponsiveContainer>
-                    </div>
+              <motion.div
+                className="lg:col-span-1 space-y-3 flex flex-col"
+                initial={{ opacity: 0, y: -60 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 1.2,
+                  ease: [0.22, 1, 0.36, 1],
+                  delay: 0.3,
+                }}
+              >
+                <Card className="min-h-87.5 max-h-87.5 bg-background/30 pointer-events-none">
+                  <CardHeader>
+                    <CardTitle>Difficulty Distribution</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex items-center gap-4">
+                      {/* Left 66% - Pie Chart */}
+                      <div className="flex-2 rounded-lg border border-border bg-background/30">
+                        <ResponsiveContainer width="100%" height={250}>
+                          <PieChart>
+                            <Pie
+                              data={difficultyData}
+                              cx="50%"
+                              cy="50%"
+                              labelLine={true}
+                              label={(props: any) => {
+                                const { percent } = props;
+                                return `${(percent * 100).toFixed(0)}%`;
+                              }}
+                              outerRadius={80}
+                              fill="#8884d8"
+                              dataKey="value"
+                            >
+                              {difficultyData.map((entry, index) => (
+                                <Cell
+                                  key={`cell-${index}`}
+                                  fill={entry.color}
+                                />
+                              ))}
+                            </Pie>
+                          </PieChart>
+                        </ResponsiveContainer>
+                      </div>
 
-                    {/* Right 33% - Legend and Total */}
-                    <div className="flex-1 flex flex-col gap-4">
-                      {/* Legend */}
-                      <div className="flex-1 flex flex-col rounded-lg border border-border bg-background/50 py-5 justify-center items-center space-y-7">
-                        {difficultyData.map((item) => (
-                          <div
-                            key={item.name}
-                            className="flex items-center gap-2"
-                          >
+                      {/* Right 33% - Legend and Total */}
+                      <div className="flex-1 flex flex-col gap-4">
+                        {/* Legend */}
+                        <div className="flex-1 flex flex-col rounded-lg border border-border bg-background/30 py-5 justify-center items-center space-y-7">
+                          {difficultyData.map((item) => (
                             <div
-                              className="w-3 h-3 rounded-full"
-                              style={{ backgroundColor: item.color }}
-                            />
-                            <span className="text-md text-foreground font-medium">
-                              {item.name}
-                            </span>
-                            <span className="text-sm text-muted-foreground">
-                              ({item.value})
-                            </span>
-                          </div>
-                        ))}
-                      </div>
+                              key={item.name}
+                              className="flex items-center gap-2"
+                            >
+                              <div
+                                className="w-3 h-3 rounded-full"
+                                style={{ backgroundColor: item.color }}
+                              />
+                              <span className="text-md text-foreground font-medium">
+                                {item.name}
+                              </span>
+                              <span className="text-sm text-muted-foreground">
+                                ({item.value})
+                              </span>
+                            </div>
+                          ))}
+                        </div>
 
-                      {/* Total Problems */}
-                      <div className="flex-1 flex flex-col rounded-lg border border-border bg-background/50 py-5 justify-center items-center space-y-7">
-                        <p className="text-2xl font-bold text-foreground">
-                          {totalProblems}
-                        </p>
-                        <p className="text-xs text-muted-foreground">
-                          Total Problems
-                        </p>
+                        <div className="flex-1 flex flex-col rounded-lg border border-border bg-background/30 py-5 justify-center items-center space-y-7">
+                          <p className="text-2xl font-semibold text-foreground">
+                            {solvedCount} / {totalProblems}
+                          </p>
+                          <p className="text-xs text-muted-foreground">
+                            Problems Solved
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </motion.div>
 
-              {/* Category Distribution */}
-              <Card className="min-h-87.5 max-h-87.5 bg-background/50 pointer-events-none">
-                <CardHeader>
-                  <CardTitle>Categories</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ResponsiveContainer width="100%" height={300}>
-                    <BarChart data={categoryData}>
-                      <CartesianGrid
-                        strokeDasharray="3 3"
-                        stroke="var(--border)"
-                      />
-                      <XAxis
-                        dataKey="name"
-                        angle={-45}
-                        textAnchor="end"
-                        height={100}
-                        tick={{ fill: "var(--primary)", fontSize: 14 }}
-                      />
-                      <YAxis tick={{ fill: "var(--primary)" }} />
-                      <Tooltip
-                        contentStyle={{
-                          backgroundColor: "var(--card)",
-                          border: "1px solid var(--border)",
-                          borderRadius: "8px",
-                        }}
-                      />
-                      <Bar
-                        dataKey="count"
-                        fill="var(--input)"
-                        radius={[8, 8, 0, 0]}
-                      />
-                    </BarChart>
-                  </ResponsiveContainer>
-                </CardContent>
-              </Card>
+              <motion.div
+                className="lg:col-span-1 space-y-3 flex flex-col"
+                initial={{ opacity: 0, y: 60 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 1.2,
+                  ease: [0.22, 1, 0.36, 1],
+                  delay: 0.5,
+                }}
+              >
+                <Card className="min-h-87.5 max-h-87.5 bg-background/30 pointer-events-none">
+                  <CardHeader>
+                    <CardTitle>Categories</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ResponsiveContainer width="100%" height={300}>
+                      <BarChart data={categoryData}>
+                        <CartesianGrid
+                          strokeDasharray="3 3"
+                          stroke="var(--border)"
+                        />
+                        <XAxis
+                          dataKey="name"
+                          angle={-45}
+                          textAnchor="end"
+                          height={100}
+                          tick={{ fill: "var(--primary)", fontSize: 14 }}
+                        />
+                        <YAxis tick={{ fill: "var(--primary)" }} />
+                        <Tooltip
+                          contentStyle={{
+                            backgroundColor: "var(--card)",
+                            border: "1px solid var(--border)",
+                            borderRadius: "8px",
+                          }}
+                        />
+                        <Bar
+                          dataKey="count"
+                          fill="var(--input)"
+                          radius={[8, 8, 0, 0]}
+                        />
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </CardContent>
+                </Card>
+              </motion.div>
             </>
           )}
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }

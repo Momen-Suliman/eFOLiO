@@ -5,7 +5,8 @@ export interface Resume {
 }
 
 export interface Information {
-  name: string;
+  firstName: string;
+  lastName: string;
   title: string;
   email: string;
   phone: string;
@@ -31,8 +32,9 @@ export interface Skills {
 export const resume: Resume = {
   information: [
     {
-      name: "Momen Suliman",
-      title: "Software Engineer Student",
+      firstName: "Momen",
+      lastName: "Suliman",
+      title: "Software Engineering Student",
       email: "personal.momen@gmail.com",
       phone: "720-751-3617",
       linkedin: "https://www.linkedin.com",

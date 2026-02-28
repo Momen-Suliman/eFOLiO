@@ -2,18 +2,24 @@
 import Logo from "@/components/icons/Logo";
 import ClipboardMail from "@/components/icons/clipboard-mail";
 import { resume } from "@/data/resume";
-import { Github, Linkedin, Mail, Check } from "lucide-react";
+import { Github, Linkedin, Check, FileUser } from "lucide-react";
 import { useState } from "react";
 import { motion } from "framer-motion";
 
 function Footer() {
   const currentYear = new Date().getFullYear();
   const email = resume.information[0].email;
-  const name = resume.information[0].name;
+  const firstName = resume.information[0].firstName;
+  const lastName = resume.information[0].lastName;
+
   const [copied, setCopied] = useState(false);
   const socialLinks = [
-    { icon: Github, label: "GitHub", href: "https://github.com/Momen-Suliman" },
-    { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" },
+    { icon: Github, label: "GitHub", href: `${resume.information[0].github}` },
+    {
+      icon: Linkedin,
+      label: "LinkedIn",
+      href: `${resume.information[0].linkedin}`,
+    },
   ];
 
   const copyEmail = () => {
@@ -34,7 +40,16 @@ function Footer() {
           <Logo className="text-md" />
           <div className="h-px w-100 bg-border"></div>
           <div className="flex items-center gap-4">
-            <div>
+            <div className="flex gap-3">
+              <a
+                href={`${resume.information[0].resumeFile}`}
+                target="_blank"
+                dir="ltr"
+                rel="noopener noreferrer"
+                className="flex h-9 w-9 items-center justify-center rounded-md border border-border bg-secondary/50 transition-colors hover:bg-accent hover:border-accent-foreground/20 disabled:opacity-50"
+              >
+                <FileUser className="h-4 w-4 text-foreground" />
+              </a>
               <button
                 onClick={copyEmail}
                 className="flex h-9 w-9 items-center justify-center cursor-pointer rounded-md border border-border bg-secondary/50 transition-colors hover:bg-accent hover:border-accent-foreground/20 disabled:opacity-50"
@@ -48,13 +63,16 @@ function Footer() {
                 )}
               </button>
             </div>
+
             <div className="h-7 w-px bg-border"></div>
-            <p className="text-sm text-center">
-              A curated collection of academic and personal projects
-              demonstrating a versatile technical toolkit — from full-stack web
-              development to network simulation and database architecture.
+
+            <p className="text-sm text-center justify-center">
+              Currently open to specializing in entry-level Full-Stack
+              Development, Backend Architecture, and Database Systems.
             </p>
+
             <div className="h-7 w-px bg-border"></div>
+
             <div className="flex gap-3">
               {socialLinks.map((social) => {
                 const Icon = social.icon;
@@ -73,9 +91,9 @@ function Footer() {
               })}
             </div>
           </div>
-          <p className="text-[0.70rem] text-center">
-            Copyright © {currentYear} {name}. All content, projects, and
-            original materials are protected. All Rights Reserved.
+          <p className="text-[0.70rem] text-center justify-center text-foreground/65">
+            Copyright © {currentYear} {firstName} {lastName}. All content,
+            projects, & original materials are protected. All Rights Reserved.
           </p>
         </div>
       </div>

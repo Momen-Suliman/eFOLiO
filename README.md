@@ -1,13 +1,13 @@
 # eFOLiO
 
-**A high-performance, 'soon to be' open-source portfolio app shell built with Next.js 15. It will help CS students with showcasing academic milestones and personal development projects.**
+**A high-performance, 'soon to be' open-source portfolio app shell built with Next.js 16. It will help CS students with showcasing academic milestones and personal development projects.**
 
 
 
 ---
 
 ## 🚀 The Elevator Pitch
-This platform serves as a high-performance 'shell' designed to enable Computer Science students to architect their professional identity. Built on Next.js 15, it provides a robust, pre-configured codebase that handles the heavy lifting of routing, performance, and UI consistency, allowing students to focus on showcasing their unique engineering journey, academic milestones, and personal development innovations.
+This platform serves as a high-performance 'shell' designed to enable Computer Science students to architect their professional identity. Built on Next.js 16, it provides a robust, pre-configured codebase that handles the heavy lifting of routing, performance, and UI consistency, allowing students to focus on showcasing their unique engineering journey, academic milestones, and personal development innovations.
 
 ## ✨ Core Features
 *   **Interactive Header:** Real-time path detection and theme toggling (Light/Dark).
@@ -16,11 +16,11 @@ This platform serves as a high-performance 'shell' designed to enable Computer S
 *   **LeetCode Tracker:** Static solution library focusing showcasing problem solving skills.
 *   **Performance First:** Built with [Tailwind CSS v4](https://tailwindcss.com) for zero-runtime CSS and [Framer Motion](https://www.framer.com) for 60fps animations.
 
-## 🛠 Tech Stack
+## 🛠 Tech-Stack
 
 | Category | Technology |
 | :--- | :--- |
-| **Framework** | [Next.js 15 (App Router)](https://nextjs.org) |
+| **Framework** | [Next.js 16 (App Router)](https://nextjs.org) |
 | **Styling** | [Tailwind CSS v4](https://tailwindcss.com) |
 | **Components** | [Shadcn UI](https://ui.shadcn.com) & [Framer Motion](https://www.framer.com) |
 | **Language** | [TypeScript](https://www.typescriptlang.org) |

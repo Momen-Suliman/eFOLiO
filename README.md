@@ -35,7 +35,7 @@ This platform serves as a high-performance 'shell' designed to enable Computer S
 ### Installation Steps
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com
+    git clone https://github.com/Momen-Suliman/eFOLiO.git
     ```
 2.  **Install dependencies:**
     ```bash

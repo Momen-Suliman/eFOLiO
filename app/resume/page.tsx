@@ -43,7 +43,7 @@ export default function ResumePage() {
         </div>
       </motion.div>
 
-      <Card className="shadow-lg flex flex-col p-5 overflow-hidden transition-all">
+      <Card className="shadow-lg flex flex-col p-5 bg-linear-to-b from-card/80 via-transparent/50 to-transparent/50 overflow-hidden transition-all">
         {/* ── HEADER: Portrait + Name + Contact ── */}
         <CardHeader className="p-0">
           <motion.section
@@ -161,7 +161,7 @@ export default function ResumePage() {
             <div className="md:col-span-2 flex flex-col gap-10">
               {/* About */}
               <motion.section {...fadeUp(0.08)}>
-                <Card className="pointer-events-none">
+                <Card className="bg-background/50 pointer-events-none">
                   <CardHeader>
                     <CardTitle className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
                       About
@@ -177,7 +177,7 @@ export default function ResumePage() {
 
               {/* Education */}
               <motion.section {...fadeUp(0.14)}>
-                <Card>
+                <Card className="bg-background/50">
                   <CardHeader>
                     <CardTitle className="text-xs font-semibold uppercase tracking-widest text-muted-foreground pointer-events-none">
                       Education
@@ -192,14 +192,24 @@ export default function ResumePage() {
                           </p>
                           <Badge
                             variant="default"
-                            className="whitespace-nowrap shrink-0 text-xs"
+                            className="whitespace-nowrap shrink-0 text-xs border-x-amber-400 bg-linear-to-r from-primary to-card/70 pointer-events-none"
                           >
                             {edu.graduation}
                           </Badge>
                         </div>
                         <div className="flex flex-wrap justify-end-safe gap-2">
-                          <Badge variant="secondary">{edu.degree}</Badge>
-                          <Badge variant="secondary">{edu.fieldOfStudy}</Badge>
+                          <Badge
+                            variant="secondary"
+                            className="pointer-events-none"
+                          >
+                            {edu.fieldOfStudy}
+                          </Badge>
+                          <Badge
+                            variant="secondary"
+                            className="bg-muted-foreground/30 pointer-events-none"
+                          >
+                            {edu.degree}
+                          </Badge>
                         </div>
                       </div>
                     ))}
@@ -210,7 +220,7 @@ export default function ResumePage() {
 
             {/* RIGHT col (1/3): Skills */}
             <motion.aside {...fadeUp(0.2)}>
-              <Card className="pointer-events-none">
+              <Card className="bg-background/50 pointer-events-none">
                 <CardHeader>
                   <CardTitle className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
                     Skills
@@ -226,7 +236,7 @@ export default function ResumePage() {
                         {group.items.map((item) => (
                           <span
                             key={item}
-                            className="text-xs px-2.5 py-1 rounded-md bg-muted text-muted-foreground border border-border"
+                            className="text-xs px-2.5 py-1 rounded-md bg-sidebar-ring/30 text-muted-foreground border border-border"
                           >
                             {item}
                           </span>
@@ -241,7 +251,7 @@ export default function ResumePage() {
         </CardContent>
         <CardFooter className="p-0 border-0 mt-10">
           <p className="text-xs text-muted-foreground text-center w-full">
-            For more details, visit our other sections like{" "}
+            For more details, visit our other pages{" "}
             <a href="/degree" className="text-primary hover:underline">
               Degree
             </a>

@@ -1,24 +1,183 @@
 "use client";
 import { motion } from "framer-motion";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { Github, ExternalLink } from "lucide-react";
+import { projects } from "@/data/projects";
+import Link from "next/link";
 
 export default function ProjectsPage() {
+  const fadeUp = (delay = 0) => ({
+    initial: { opacity: 0, y: 16 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1], delay },
+  });
+
+  const featured = projects.filter((p) => p.featured);
+  const archived = projects.filter((p) => !p.featured);
+
   return (
     <div className="container mx-auto px-6 py-12">
       <motion.div
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pointer-events-none"
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.7, ease: "easeIn" }}
+        transition={{ duration: 0.75, ease: "easeIn" }}
       >
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-foreground mb-2">
             Projects Portfolio
           </h1>
           <p className="text-sm text-muted-foreground">
-            My culmination of my personal & academic projects
+            Turning academic concepts into real-world applications
           </p>
         </div>
       </motion.div>
+
+      <motion.div
+        className="flex justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-10"
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.75, ease: "easeIn" }}
+      >
+        <Carousel className="w-full mx-auto max-w-[100vh]">
+          <CarouselContent>
+            {featured.map((project) => (
+              <CarouselItem key={project.id}>
+                <Card className="bg-linear-to-b from-card/15 via-transparent/50 to-card/80 overflow-hidden">
+                  {/* Image / placeholder banner */}
+                  <div className="relative w-full h-52 bg-muted flex items-center justify-center">
+                    {project.image ? (
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <span className="text-4xl font-bold text-muted-foreground/20 select-none">
+                        {project.title}
+                      </span>
+                    )}
+                  </div>
+
+                  <CardContent className="p-6 flex flex-col gap-4">
+                    <div className="flex justify-between items-start gap-4">
+                      <h3 className="text-lg font-semibold text-foreground leading-tight">
+                        {project.title}
+                      </h3>
+                      <div className="flex gap-2 shrink-0">
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-muted-foreground hover:text-foreground transition-colors"
+                        >
+                          <button className="flex items-center gap-2 px-3 py-1.5 text-xs rounded-md border border-border bg-background transition-colors pointer-events-none">
+                            GitHub
+                          </button>
+                        </a>
+                        {project.internalRoute && (
+                          <Link
+                            href={project.internalRoute}
+                            className="text-muted-foreground hover:text-foreground transition-colors"
+                          >
+                            <button className="flex items-center gap-2 px-3 py-1.5 text-xs rounded-md border border-border bg-linear-to-r from-logo/20 to-card transition-colors pointer-events-none">
+                              LAUNCH
+                            </button>
+                          </Link>
+                        )}
+                      </div>
+                    </div>
+
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {project.description}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2">
+                      {project.tools.map((tool) => (
+                        <Badge
+                          key={tool}
+                          variant="secondary"
+                          className="text-xs"
+                        >
+                          {tool}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
+      </motion.div>
+
+      <motion.div
+        className="flex justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-5"
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, ease: "easeIn" }}
+      >
+        <h3 className="text-2xl font-bold text-sidebar-foreground mb-2">
+          Technical Archive
+        </h3>
+      </motion.div>
+
+      <div>
+        <motion.div
+          className="flex justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, ease: "easeIn" }}
+        >
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {archived.map((project) => (
+              <Card key={project.id} className="flex flex-col justify-between">
+                <CardHeader className="pb-2">
+                  <div className="flex justify-between items-start gap-2">
+                    <CardTitle className="text-sm font-semibold text-foreground leading-snug">
+                      {project.title}
+                    </CardTitle>
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-foreground transition-colors shrink-0"
+                    >
+                      <Github size={15} />
+                    </a>
+                  </div>
+                </CardHeader>
+                <CardContent className="flex flex-col gap-3">
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.tools.map((tool) => (
+                      <Badge
+                        key={tool}
+                        variant="outline"
+                        className="text-xs bg-accent"
+                      >
+                        {tool}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </motion.div>
+      </div>
     </div>
   );
 }

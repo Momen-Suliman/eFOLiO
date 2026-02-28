@@ -1,13 +1,15 @@
 "use client";
 import Logo from "@/components/icons/Logo";
 import ClipboardMail from "@/components/icons/clipboard-mail";
+import { resume } from "@/data/resume";
 import { Github, Linkedin, Mail, Check } from "lucide-react";
 import { useState } from "react";
 import { motion } from "framer-motion";
 
 function Footer() {
   const currentYear = new Date().getFullYear();
-  const email = "personal.momen@gmail.com";
+  const email = resume.information[0].email;
+  const name = resume.information[0].name;
   const [copied, setCopied] = useState(false);
   const socialLinks = [
     { icon: Github, label: "GitHub", href: "https://github.com/Momen-Suliman" },
@@ -49,7 +51,7 @@ function Footer() {
             <div className="h-7 w-px bg-border"></div>
             <p className="text-sm text-center">
               A curated collection of academic and personal projects
-              demonstrating a versatile technical toolkit—from full-stack web
+              demonstrating a versatile technical toolkit — from full-stack web
               development to network simulation and database architecture.
             </p>
             <div className="h-7 w-px bg-border"></div>
@@ -72,7 +74,7 @@ function Footer() {
             </div>
           </div>
           <p className="text-[0.70rem] text-center">
-            Copyright © {currentYear} Momen Suliman. All content, projects, and
+            Copyright © {currentYear} {name}. All content, projects, and
             original materials are protected. All Rights Reserved.
           </p>
         </div>

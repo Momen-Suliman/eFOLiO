@@ -50,6 +50,12 @@ export const resume: Resume = {
       fieldOfStudy: "Computer Science",
       graduation: "Graduating May, 2026",
     },
+    {
+      institution: "University of Colorado Boulder",
+      degree: "Bachelor of Science",
+      fieldOfStudy: "Computer Engineering",
+      graduation: "Time: 2017-2018",
+    },
   ],
   skills: [
     {
@@ -76,6 +82,7 @@ export const resume: Resume = {
         "Node.js",
         "PostgreSQL",
         "SQLite",
+        "MySQL",
       ],
     },
   ],

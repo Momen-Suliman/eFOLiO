@@ -121,7 +121,7 @@ export default function LeetcodesPage() {
       >
         {/* Left Column - Problems List */}
         <div className="lg:col-span-1 space-y-3 flex flex-col">
-          <Card className="min-h-[724px] max-h-[724px]">
+          <Card className="min-h-181 max-h-181 bg-background/50">
             <CardHeader>
               <div className="flex items-center justify-between">
                 <CardTitle className="text-xl pointer-events-none">
@@ -211,11 +211,11 @@ export default function LeetcodesPage() {
             // Detail View - Show selected problem details
             <>
               {/* Problem Description */}
-              <Card className="min-h-[225px] max-h-[225px] pointer-events-none">
+              <Card className="min-h-56.25 max-h-56.25 bg-background/50 pointer-events-none">
                 <CardHeader>
                   <CardTitle>Problem Description</CardTitle>
                 </CardHeader>
-                <CardContent className="overflow-y-auto max-h-[150px]">
+                <CardContent className="overflow-y-auto max-h-37.5">
                   <p className="text-sm text-muted-foreground leading-relaxed">
                     {selectedProblemData?.description}
                   </p>
@@ -223,11 +223,11 @@ export default function LeetcodesPage() {
               </Card>
 
               {/* My Solution (Approach) */}
-              <Card className="min-h-[225px] max-h-[225px] pointer-events-none">
+              <Card className="min-h-56.25 max-h-56.25 bg-background/50 pointer-events-none">
                 <CardHeader>
                   <CardTitle>My Solution</CardTitle>
                 </CardHeader>
-                <CardContent className="overflow-y-auto max-h-[150px]">
+                <CardContent className="overflow-y-auto max-h-37.5">
                   <p className="text-sm text-foreground leading-relaxed">
                     {selectedProblemData?.solution}
                   </p>
@@ -235,19 +235,19 @@ export default function LeetcodesPage() {
               </Card>
 
               {/* Code Implementation */}
-              <Card className="min-h-[225px] max-h-[225px]">
+              <Card className="min-h-56.25 max-h-56.25 bg-background/50">
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <CardTitle className="pointer-events-none">
                       Implementation
                     </CardTitle>
                     <div className="flex gap-2">
-                      <button className="flex items-center gap-2 px-3 py-1.5 text-xs rounded-md border border-border bg-background hover:bg-accent transition-colors pointer-events-none">
+                      <button className="flex items-center gap-2 px-3 py-1.5 text-xs rounded-md border border-border bg-background text-foreground transition-colors pointer-events-none">
                         Python3
                       </button>
                       <button
                         onClick={copyCode}
-                        className="flex items-center gap-2 px-3 py-1.5 text-xs rounded-md border border-border bg-background hover:bg-accent transition-colors cursor-pointer"
+                        className="flex items-center gap-2 px-3 py-1.5 text-xs rounded-md border border-border bg-accent hover:bg-sidebar-ring transition-colors cursor-pointer"
                       >
                         {copied ? (
                           <>✓ Copied</>
@@ -260,7 +260,7 @@ export default function LeetcodesPage() {
                       </button>
                       <button
                         onClick={openLeetCode}
-                        className="flex items-center gap-2 px-3 py-1.5 text-xs rounded-md border border-border bg-background hover:bg-accent transition-colors cursor-pointer"
+                        className="flex items-center gap-2 px-3 py-1.5 text-xs rounded-md border border-border bg-accent hover:bg-sidebar-ring transition-colors cursor-pointer"
                       >
                         <ExternalLink className="h-3 w-3" />
                         Try on LeetCode
@@ -268,7 +268,7 @@ export default function LeetcodesPage() {
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent className="overflow-y-auto max-h-[150px]">
+                <CardContent className="overflow-y-auto max-h-37.5">
                   <pre className="p-4 rounded-lg bg-muted/50 overflow-x-auto text-xs">
                     <code className="text-sm font-mono">
                       {selectedProblemData?.code}
@@ -281,7 +281,7 @@ export default function LeetcodesPage() {
             // Overview - Show stats
             <>
               {/* Difficulty Distribution */}
-              <Card className="min-h-[350px] max-h-[350px] pointer-events-none">
+              <Card className="min-h-87.5 max-h-87.5 bg-background/50 pointer-events-none">
                 <CardHeader>
                   <CardTitle>Difficulty Distribution</CardTitle>
                 </CardHeader>
@@ -350,7 +350,7 @@ export default function LeetcodesPage() {
               </Card>
 
               {/* Category Distribution */}
-              <Card className="min-h-[350px] max-h-[350px] pointer-events-none">
+              <Card className="min-h-87.5 max-h-87.5 bg-background/50 pointer-events-none">
                 <CardHeader>
                   <CardTitle>Categories</CardTitle>
                 </CardHeader>

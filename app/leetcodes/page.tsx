@@ -24,19 +24,17 @@ import {
 import { Check, Copy, ExternalLink } from "lucide-react";
 
 export default function LeetcodesPage() {
-  const [selectedProblem, setSelectedProblem] = useState<string | null>(null);
+  const [selectedProblem, setSelectedProblem] = useState<number | null>(null);
   const [copied, setCopied] = useState(false);
 
   const totalProblems = leetcodes.length;
-  const solvedCount = leetcodes.filter(
-    (lc) => lc.status === "Solved" || lc.status === "Reviewed",
-  ).length;
+  const solvedCount = leetcodes.filter((lc) => lc.status === "Solved").length;
 
   const difficultyData = [
     {
       name: "Simple",
       value: leetcodes.filter((lc) => lc.difficulty === "Simple").length,
-      color: "#22c55e",
+      color: "#3599fc",
     },
     {
       name: "Complex",
@@ -165,19 +163,20 @@ export default function LeetcodesPage() {
             </CardHeader>
             <CardContent className="space-y-3 grow min-h-0 overflow-y-auto">
               {leetcodes.map((problem) => (
-                <div
+                <button
                   key={problem.id}
                   onClick={() => setSelectedProblem(problem.id)}
-                  className={`rounded-lg border overflow-hidden hover:border-primary/50 transition-all cursor-pointer ${
+                  aria-pressed={selectedProblem === problem.id}
+                  className={`rounded-lg border overflow-hidden hover:border-primary/50 transition-all cursor-pointer w-full ${
                     selectedProblem === problem.id
                       ? "border-primary"
                       : "border-border"
                   }`}
                 >
                   <div className="bg-background/50 p-4 flex-2 flex items-center min-h-15">
-                    <h3 className="text-lg font-medium text-foreground">
+                    <h2 className="text-lg font-medium text-foreground">
                       {problem.title}
-                    </h3>
+                    </h2>
                   </div>
 
                   <div className="h-px w-full bg-border"></div>
@@ -190,7 +189,7 @@ export default function LeetcodesPage() {
                       <span
                         className={`text-xs sm:text-sm text-center ${
                           problem.difficulty === "Simple"
-                            ? "text-green-600 dark:text-green-400 font-medium"
+                            ? "text-[#3599fc] font-medium"
                             : "text-[#f25500] font-medium"
                         }`}
                       >
@@ -214,17 +213,15 @@ export default function LeetcodesPage() {
                       <span
                         className={`text-xs sm:text-sm text-center font-medium ${
                           problem.status === "Solved"
-                            ? "text-blue-600 dark:text-blue-400"
-                            : problem.status === "Attempted"
-                              ? "text-yellow-600 dark:text-yellow-400"
-                              : "text-purple-600 dark:text-purple-400"
+                            ? "text-green-600 dark:text-green-400"
+                            : "text-yellow-600 dark:text-yellow-400"
                         }`}
                       >
                         {problem.status}
                       </span>
                     </div>
                   </div>
-                </div>
+                </button>
               ))}
             </CardContent>
             <CardFooter className="text-center text-sm text-muted-foreground pointer-events-none">
@@ -265,7 +262,11 @@ export default function LeetcodesPage() {
                       Implementation
                     </CardTitle>
                     <div className="flex flex-wrap gap-2">
-                      <button className="flex items-center gap-2 px-3 py-1.5 text-xs rounded-md border border-border bg-background text-foreground transition-colors pointer-events-none">
+                      <button
+                        aria-hidden="true"
+                        tabIndex={-1}
+                        className="flex items-center gap-2 px-3 py-1.5 text-xs rounded-md border border-border bg-background text-foreground transition-colors pointer-events-none"
+                      >
                         Python3
                       </button>
                       <button
@@ -323,7 +324,7 @@ export default function LeetcodesPage() {
                     <div className="flex items-center gap-4">
                       <div className="flex-2 rounded-lg border border-border bg-background/30">
                         <ResponsiveContainer width="100%" height={250}>
-                          <PieChart>
+                          <PieChart tabIndex={-1}>
                             <Pie
                               data={difficultyData}
                               cx="50%"
@@ -399,7 +400,7 @@ export default function LeetcodesPage() {
                   </CardHeader>
                   <CardContent>
                     <ResponsiveContainer width="100%" height={300}>
-                      <BarChart data={categoryData}>
+                      <BarChart tabIndex={-1} data={categoryData}>
                         <CartesianGrid
                           strokeDasharray="3 3"
                           stroke="var(--border)"

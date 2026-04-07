@@ -1,5 +1,5 @@
 export interface Leetcode {
-  id: string;
+  id: number;
   title: string;
   difficulty: "Simple" | "Complex";
   category:
@@ -19,7 +19,7 @@ export interface Leetcode {
 
 export const leetcodes: Leetcode[] = [
   {
-    id: "274",
+    id: 274,
     title: "H-Index",
     difficulty: "Complex",
     category: "Arrays",
@@ -39,7 +39,7 @@ export const leetcodes: Leetcode[] = [
         return hIndex`,
   },
   {
-    id: "1338",
+    id: 1338,
     title: "Reduce Array Size to The Half",
     difficulty: "Complex",
     category: "Arrays",
@@ -68,7 +68,7 @@ class Solution:
         return output`,
   },
   {
-    id: "983",
+    id: 983,
     title: "Minimum Cost For Tickets",
     difficulty: "Complex",
     category: "Arrays",
@@ -97,7 +97,7 @@ class Solution:
         return dp[-1]`,
   },
   {
-    id: "290",
+    id: 290,
     title: "Word Pattern",
     difficulty: "Simple",
     category: "Hash Tables",
@@ -130,7 +130,7 @@ class Solution:
             return False`,
   },
   {
-    id: "518",
+    id: 518,
     title: "Coin Change II",
     difficulty: "Complex",
     category: "Hash Tables",
@@ -153,7 +153,7 @@ class Solution:
         return combo[amount]`,
   },
   {
-    id: "383",
+    id: 383,
     title: "Ransom Note",
     difficulty: "Simple",
     category: "Hash Tables",
@@ -175,7 +175,7 @@ class Solution:
         return True`,
   },
   {
-    id: "56",
+    id: 56,
     title: "Merge Intervals",
     difficulty: "Complex",
     category: "Arrays",
@@ -211,7 +211,7 @@ class Solution:
         return result`,
   },
   {
-    id: "841",
+    id: 841,
     title: "Keys and Rooms",
     difficulty: "Complex",
     category: "Graphs",
@@ -239,7 +239,7 @@ class Solution:
                     return False`,
   },
   {
-    id: "112",
+    id: 112,
     title: "Path Sum",
     difficulty: "Simple",
     category: "Trees",
@@ -274,7 +274,7 @@ class Solution:
             return False`,
   },
   {
-    id: "501",
+    id: 501,
     title: "Find Mode in Binary Search Tree",
     difficulty: "Simple",
     category: "Trees",
@@ -306,7 +306,7 @@ class Solution:
         return modes`,
   },
   {
-    id: "540",
+    id: 540,
     title: "Single Element in a Sorted Array",
     difficulty: "Complex",
     category: "Arrays",
@@ -336,7 +336,7 @@ class Solution:
             return nums[-1]`,
   },
   {
-    id: "1122",
+    id: 1122,
     title: "Relative Sort Array",
     difficulty: "Complex",
     category: "Arrays",
@@ -370,7 +370,7 @@ class Solution:
         return sortedArr + arr1`,
   },
   {
-    id: "1051",
+    id: 1051,
     title: "Height Checker",
     difficulty: "Simple",
     category: "Arrays",
@@ -390,7 +390,7 @@ class Solution:
         return outOdOrder`,
   },
   {
-    id: "2971",
+    id: 2971,
     title: "Find Polygon with the Largest Perimeter",
     difficulty: "Complex",
     category: "Arrays",

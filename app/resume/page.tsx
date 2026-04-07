@@ -24,6 +24,7 @@ const fadeUp = (delay = 0) => ({
 
 export default function ResumePage() {
   const info = resume.information[0];
+  const fullName: string = `${info.firstName} ${info.lastName}`;
 
   return (
     <div className="container mx-auto px-6 py-12">
@@ -53,7 +54,8 @@ export default function ResumePage() {
               {info.portraitFile ? (
                 <Image
                   src={`${info.portraitFile}`}
-                  alt={info.firstName}
+                  alt="profile picture"
+                  loading="eager"
                   fill
                   className="object-cover"
                 />
@@ -68,17 +70,16 @@ export default function ResumePage() {
             </div>
 
             <div dir="rtl" className="flex-1 min-w-0">
-              <h1 className="text-3xl font-semibold text-foreground tracking-tight pointer-events-none">
-                {info.firstName} {info.lastName}
+              <h1 className="text-3xl font-semibold text-foreground tracking-tight cursor-default">
+                {fullName}
               </h1>
-              <p className="text-base text-muted-foreground mt-1 mb-4 pointer-events-none">
+              <p className="text-base text-muted-foreground mt-1 mb-4 cursor-default">
                 {info.title}
               </p>
 
-              <div className="flex flex-wrap gap-3">
+              <section className="flex flex-wrap gap-3">
                 <a
                   href={`mailto:${info.email}`}
-                  dir="ltr"
                   className="flex items-center gap-2 px-3 py-1.5 text-xs rounded-md border border-border bg-background hover:bg-accent transition-colors"
                 >
                   <Mail size={15} className="shrink-0" />
@@ -87,7 +88,6 @@ export default function ResumePage() {
                 <span className="h-6 w-px bg-border"></span>
                 <a
                   href={`tel:${info.phone}`}
-                  dir="ltr"
                   className="flex items-center gap-2 px-3 py-1.5 text-xs rounded-md border border-border bg-background hover:bg-accent transition-colors"
                 >
                   <Phone size={15} className="shrink-0" />
@@ -96,7 +96,6 @@ export default function ResumePage() {
                 <span className="h-6 w-px bg-border"></span>
                 <a
                   href={info.github}
-                  dir="ltr"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 px-3 py-1.5 text-xs rounded-md border border-border bg-background hover:bg-accent transition-colors"
@@ -107,7 +106,6 @@ export default function ResumePage() {
                 <span className="h-6 w-px bg-border"></span>
                 <a
                   href={info.linkedin}
-                  dir="ltr"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 px-3 py-1.5 text-xs rounded-md border border-border bg-background hover:bg-accent transition-colors"
@@ -118,7 +116,6 @@ export default function ResumePage() {
                 <span className="h-6 w-px bg-border"></span>
                 <a
                   href={`${info.resumeFile}`}
-                  dir="ltr"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 px-3 py-1.5 text-xs rounded-md border border-border bg-background hover:bg-accent transition-colors"
@@ -126,7 +123,7 @@ export default function ResumePage() {
                   <ExternalLink size={15} className="shrink-0" />
                   Resume PDF
                 </a>
-              </div>
+              </section>
             </div>
           </motion.section>
         </CardHeader>
@@ -191,7 +188,7 @@ export default function ResumePage() {
               </motion.section>
             </div>
 
-            <motion.aside {...fadeUp(0.32)}>
+            <motion.aside {...fadeUp(0.31)}>
               <Card className="bg-background/50 pointer-events-none">
                 <CardHeader>
                   <CardTitle className="text-xs font-bold uppercase tracking-widest text-muted-foreground">

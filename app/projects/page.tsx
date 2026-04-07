@@ -1,6 +1,12 @@
 "use client";
 import { motion } from "framer-motion";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
   Carousel,
@@ -60,7 +66,7 @@ export default function ProjectsPage() {
                     {project.image ? (
                       <img
                         src={project.image}
-                        alt={project.title}
+                        alt=""
                         className="w-full h-full object-cover"
                       />
                     ) : (
@@ -72,28 +78,25 @@ export default function ProjectsPage() {
 
                   <CardContent className="p-6 flex flex-col gap-4">
                     <div className="flex justify-between items-start gap-4">
-                      <h3 className="text-lg font-semibold text-foreground leading-tight">
+                      <h2 className="text-lg font-semibold text-foreground leading-tight cursor-default">
                         {project.title}
-                      </h3>
+                      </h2>
                       <div className="flex gap-2 shrink-0">
                         <a
                           href={project.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-muted-foreground hover:text-foreground transition-colors"
+                          className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 px-3 py-1.5 text-xs rounded-md border border-border bg-background cursor-pointer"
                         >
-                          <button className="flex items-center gap-2 px-3 py-1.5 text-xs rounded-md border border-border bg-background transition-colors cursor-pointer">
-                            GitHub
-                          </button>
+                          GitHub
                         </a>
+
                         {project.internalRoute && (
                           <Link
                             href={project.internalRoute}
-                            className="text-muted-foreground hover:text-foreground transition-colors"
+                            className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 px-3 py-1.5 text-xs rounded-md border border-border bg-linear-to-r from-logo/20 to-card cursor-pointer"
                           >
-                            <button className="flex items-center gap-2 px-3 py-1.5 text-xs rounded-md border border-border bg-linear-to-r from-logo/20 to-card transition-colors cursor-pointer">
-                              LAUNCH
-                            </button>
+                            LAUNCH
                           </Link>
                         )}
                       </div>
@@ -103,7 +106,7 @@ export default function ProjectsPage() {
                       {project.description}
                     </p>
 
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 cursor-default">
                       {project.tools.map((tool) => (
                         <Badge
                           key={tool}
@@ -146,10 +149,13 @@ export default function ProjectsPage() {
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {archived.map((project) => (
-              <Card key={project.id} className="flex flex-col justify-between">
-                <CardHeader className="pb-2">
-                  <div className="flex justify-between items-start gap-2">
-                    <CardTitle className="text-sm font-semibold text-foreground leading-snug">
+              <Card
+                key={project.id}
+                className="pb-0 pt-0 flex flex-col justify-start"
+              >
+                <CardHeader className="pt-4 [.border-b]:pb-1 items-center border-b bg-card/30">
+                  <div className="flex justify-between items-center gap-2">
+                    <CardTitle className="text-sm font-semibold text-foreground leading-snug bg-card/30">
                       <a
                         href={project.githubUrl}
                         target="_blank"
@@ -160,6 +166,8 @@ export default function ProjectsPage() {
                     </CardTitle>
                     <a
                       href={project.githubUrl}
+                      aria-hidden="true"
+                      tabIndex={-1}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-muted-foreground hover:text-foreground transition-colors shrink-0"
@@ -172,7 +180,9 @@ export default function ProjectsPage() {
                   <p className="text-xs text-muted-foreground leading-relaxed">
                     {project.description}
                   </p>
-                  <div className="flex flex-wrap gap-1.5">
+                </CardContent>
+                <CardFooter>
+                  <div className="pb-3 flex flex-wrap gap-1.5 cursor-default">
                     {project.tools.map((tool) => (
                       <Badge
                         key={tool}
@@ -183,7 +193,7 @@ export default function ProjectsPage() {
                       </Badge>
                     ))}
                   </div>
-                </CardContent>
+                </CardFooter>
               </Card>
             ))}
           </div>

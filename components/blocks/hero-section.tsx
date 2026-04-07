@@ -7,9 +7,12 @@ import { motion } from "framer-motion";
 import { resume } from "@/data/resume";
 
 export default function HeroSection() {
-  const totalLeetcodes = leetcodes.length - 1;
-  const totalCourses = courses.length - 1;
-  const totalProjects = projects.length - 1;
+  const totalLeetcodes =
+    leetcodes.length === 1 ? leetcodes.length : leetcodes.length - 1;
+  const totalCourses =
+    courses.length === 1 ? courses.length : courses.length - 1;
+  const totalProjects =
+    projects.length === 1 ? projects.length : projects.length - 1;
 
   const name = resume.information[0].firstName;
   const githubUrl = resume.information[0].github;
@@ -75,7 +78,7 @@ export default function HeroSection() {
               }}
               className="mt-8 text-lg font-nomral text-pretty text-muted-foreground sm:text-xl/7"
             >
-              A showcase of my academic journey, personal projects, & Full-Stack
+              Showcasing my academic journey, personal projects, & Full-Stack
               Apps—from Database Systems to Network Simulations.
             </motion.p>
 
@@ -104,18 +107,18 @@ export default function HeroSection() {
                 {
                   label: "Courses",
                   href: "/degree",
-                  value: `${totalCourses}+`,
+                  value: `${totalCourses}${courses.length > 1 ? "+" : ""}`,
                 },
                 {
                   label: "Projects",
                   href: "/projects",
-                  value: `${totalProjects}+`,
+                  value: `${totalProjects}${projects.length > 1 ? "+" : ""}`,
                 },
 
                 {
                   label: "LeetCodes",
                   href: "/leetcodes",
-                  value: `${totalLeetcodes}+`,
+                  value: `${totalLeetcodes}${leetcodes.length > 1 ? "+" : ""}`,
                 },
               ].map((stat, index) => (
                 <motion.div

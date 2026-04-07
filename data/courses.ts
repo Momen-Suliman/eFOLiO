@@ -1,5 +1,5 @@
 export interface Course {
-  id: string;
+  id: number;
   code: string;
   name: string;
   grade: string;
@@ -11,7 +11,7 @@ export interface Course {
 
 export const courses: Course[] = [
   {
-    id: "1",
+    id: 1,
     code: "CPE1040",
     name: "Introduction to Computer Engineering",
     grade: "A",
@@ -22,7 +22,7 @@ export const courses: Course[] = [
     image: "/images/cpe1040.png",
   },
   {
-    id: "2",
+    id: 2,
     code: "CS3250",
     name: "Software Dev. Methods, & Tools",
     grade: "A",
@@ -33,7 +33,7 @@ export const courses: Course[] = [
     image: "/images/cs3250.jpg",
   },
   {
-    id: "3",
+    id: 3,
     code: "CS3700",
     name: "Networks & Distributed Computing",
     grade: "A-",
@@ -44,7 +44,7 @@ export const courses: Course[] = [
     image: "/images/cs3700.jpg",
   },
   {
-    id: "4",
+    id: 4,
     code: "CS3710",
     name: "Web Application Development",
     grade: "A+",
@@ -55,7 +55,7 @@ export const courses: Course[] = [
     image: "/images/cs3710.png",
   },
   {
-    id: "5",
+    id: 5,
     code: "CS3810",
     name: "Principles of Database Systems",
     grade: "A+",
@@ -66,7 +66,7 @@ export const courses: Course[] = [
     image: "/images/cs3810.jpg",
   },
   {
-    id: "6",
+    id: 6,
     code: "CS4050",
     name: "Algorithms & Algorithm Analysis",
     grade: "A",

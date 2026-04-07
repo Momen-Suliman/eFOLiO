@@ -10,6 +10,7 @@ function Footer() {
   const currentYear = new Date().getFullYear();
   const email = resume.information[0].email;
   const fullName: string = `${resume.information[0].firstName} ${resume.information[0].lastName}`;
+  const footerNote: string = `${resume.information[0].footerNote}`;
 
   const [copied, setCopied] = useState(false);
   const socialLinks = [
@@ -56,6 +57,7 @@ function Footer() {
           <div className="flex items-center gap-3 py-2">
             <a
               href={`${resume.information[0].resumeFile}`}
+              aria-label="view external resume"
               target="_blank"
               dir="ltr"
               rel="noopener noreferrer"
@@ -95,8 +97,7 @@ function Footer() {
           <div className="h-px w-30 bg-border my-2"></div>
 
           <p className="text-sm text-center justify-center pt-2">
-            Currently looking to specializing in entry-level Full-Stack
-            Development, Backend Architecture, or Database Systems.
+            {footerNote}
           </p>
           <p className="text-[0.70rem] text-center justify-center text-foreground/65">
             Copyright © {currentYear} {fullName}. All content, projects, &

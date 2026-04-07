@@ -17,7 +17,11 @@ function Logo({ className = "text-4xl" }: { className?: string }) {
                 font-sans font-extralight text-logo transition-colors hover:text-primary
             `}
       >
-        eF O L iO
+        {/*Visible Logo design*/}
+        <span aria-hidden="true">eF O L iO</span>
+
+        {/*Screen reader Pronunciation*/}
+        <span className="sr-only">e-folio</span>
       </h1>
     </Link>
   );

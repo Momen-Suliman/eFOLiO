@@ -15,6 +15,7 @@ export interface Information {
   resumeFile: string;
   portraitFile?: string;
   summary: string;
+  footerNote: string;
 }
 
 export interface Education {
@@ -42,7 +43,9 @@ export const resume: Resume = {
       resumeFile: "/Momen_Suliman_Resume.pdf",
       portraitFile: "/images/portrait.jpg",
       summary:
-        "Independently architected and documented a full open- source project from the ground up — no team, no handholding, just a clear vision and the discipline to build it. Stepped up as the de facto lead on a team project, coordinating schema, code, and testing across contributors to deliver a polished result to senior colleagues.",
+        "Independently architected and documented a full open-source project from the ground up — no team, no handholding, just a clear vision and the discipline to build it. Stepped up as the de facto lead on a team project, coordinating schema, code, and testing across contributors to deliver a polished result to senior colleagues.",
+      footerNote:
+        "Currently looking to specialize in entry-level Full-Stack Development, Backend Architecture, or Database Systems.",
     },
   ],
   education: [

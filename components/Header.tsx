@@ -18,7 +18,7 @@ function Header() {
   const [hoveredPath, setHoveredPath] = useState<string | null>(null);
   const [theme, setTheme] = useState<"light" | "dark" | null>(null);
   const [sheetOpen, setSheetOpen] = useState(false);
-  const socialLinks = [
+  const gitHubLinks = [
     { icon: Github, label: "GitHub", href: `${resume.information[0].github}` },
   ];
 
@@ -101,7 +101,7 @@ function Header() {
             <div className="md:hidden">
               <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
                 <SheetTrigger className="p-2 hover:bg-accent rounded-md transition-colors">
-                  <Menu className="h-5.5 w-5.5" />
+                  <Menu aria-label="navigation menu" className="h-5.5 w-5.5" />
                 </SheetTrigger>
                 <SheetContent
                   side="right"
@@ -128,7 +128,7 @@ function Header() {
 
             <div className="h-6 w-px bg-border"></div>
 
-            {socialLinks.map((social) => {
+            {gitHubLinks.map((social) => {
               const Icon = social.icon;
               return (
                 <a
@@ -137,7 +137,7 @@ function Header() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex h-9 w-9 items-center justify-center rounded-md border border-border bg-secondary/50 transition-colors hover:bg-accent hover:border-accent-foreground/20 disabled:opacity-50"
-                  aria-label={social.label}
+                  aria-label={`visit ${social.label} page`}
                 >
                   <Icon className="h-4 w-4 text-foreground" />
                 </a>

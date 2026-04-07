@@ -86,6 +86,17 @@ export default function DegreePage() {
                   prevId === course.id ? null : course.id,
                 )
               }
+              tabIndex={0}
+              role="button"
+              aria-expanded={selectedCourse === course.id}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setSelectedCourse((prevId) =>
+                    prevId === course.id ? null : course.id,
+                  );
+                }
+              }}
             >
               <div className="relative h-48 w-full bg-muted">
                 <Image

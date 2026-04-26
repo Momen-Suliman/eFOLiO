@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import Logo from "@/components/icons/Logo";
+import { Logo } from "@/components/icons/Logo";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
@@ -12,8 +12,9 @@ import {
 } from "./ui/navigation-menu";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "./ui/sheet";
 import { resume } from "@/data/resume";
+import { links } from "@/data/navigation";
 
-function Header() {
+export function Header() {
   const pathname = usePathname();
   const [hoveredPath, setHoveredPath] = useState<string | null>(null);
   const [theme, setTheme] = useState<"light" | "dark" | null>(null);
@@ -22,26 +23,22 @@ function Header() {
     { icon: Github, label: "GitHub", href: `${resume.information[0].github}` },
   ];
 
-  const links = [
-    { name: "Home", href: "/" },
-    { name: "Resume", href: "/resume" },
-    { name: "Degree", href: "/degree" },
-    { name: "Projects", href: "/projects" },
-    { name: "LeetCodes", href: "/leetcodes" },
-  ];
-
   useEffect(() => {
     const isDark = document.documentElement.classList.contains("dark");
     setTheme(isDark ? "dark" : "light");
   }, []);
 
+  /*
+   * THEME TOGGLE LOGIC
+   * Syncs the UI with the 'dark' class on the HTML element.
+   * We use localStorage to persist the choice across sessions.
+   */
   const toggleTheme = () => {
     if (!theme) return;
 
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
-
     if (newTheme === "dark") {
       document.documentElement.classList.add("dark");
     } else {
@@ -181,5 +178,3 @@ function Header() {
     </motion.header>
   );
 }
-
-export default Header;

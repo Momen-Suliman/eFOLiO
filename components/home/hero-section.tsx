@@ -3,10 +3,11 @@ import Link from "next/link";
 import { leetcodes } from "@/data/leetcodes";
 import { courses } from "@/data/courses";
 import { projects } from "@/data/projects";
-import { motion } from "framer-motion";
 import { resume } from "@/data/resume";
+import { motion } from "framer-motion";
 
 export default function HeroSection() {
+  //edit these constants to remove the X+ functionality
   const totalLeetcodes =
     leetcodes.length === 1 ? leetcodes.length : leetcodes.length - 1;
   const totalCourses =
@@ -16,6 +17,12 @@ export default function HeroSection() {
 
   const name = resume.information[0].firstName;
   const githubUrl = resume.information[0].github;
+  const status = resume.information[0].status;
+  const title = resume.information[0].title;
+
+  // Add a description to your hero section here
+  const hero_desc =
+    "Showcasing my academic journey, personal projects, & Full-Stack Apps—from Database Systems to Network Simulations.";
 
   return (
     <div className="bg-transparent">
@@ -27,14 +34,13 @@ export default function HeroSection() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.65, ease: "easeOut" }}
           >
-            <div className="relative rounded-full px-3 py-1 text-sm/6 text-muted-foreground ring-1 ring-border hover:ring-ring transition-colors">
-              <span className="hidden sm:inline">
-                Open to Internships & Collaborations.
-              </span>
-              <span className="sm:hidden">Open to Opportunities.</span>{" "}
+            <div className="relative flex flex-col items-center rounded-full px-3 py-1 text-sm/6 text-muted-foreground ring-1 ring-border hover:ring-ring transition-colors">
+              <span className="hidden sm:inline">{status}</span>
+              <span className="sm:hidden">{status}</span>{" "}
               <Link
                 href={githubUrl}
                 target="_blank"
+                rel="noopener noreferrer"
                 className="font-semibold text-logo"
               >
                 <span aria-hidden="true" className="absolute inset-0" />
@@ -64,7 +70,7 @@ export default function HeroSection() {
                 className="text-primary/50 font-light"
               >
                 {" "}
-                CS Student & Developer
+                {title}
               </motion.span>
             </h1>
 
@@ -76,10 +82,9 @@ export default function HeroSection() {
                 ease: [0.22, 1, 0.36, 1],
                 delay: 0.35,
               }}
-              className="mt-8 text-lg font-nomral text-pretty text-muted-foreground sm:text-xl/7"
+              className="mt-8 text-lg font-normal text-pretty text-muted-foreground sm:text-xl/7"
             >
-              Showcasing my academic journey, personal projects, & Full-Stack
-              Apps—from Database Systems to Network Simulations.
+              {hero_desc}
             </motion.p>
 
             <motion.div

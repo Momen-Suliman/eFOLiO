@@ -15,6 +15,7 @@ export interface Information {
   resumeFile: string;
   portraitFile?: string;
   summary: string;
+  status: string;
   footerNote: string;
 }
 
@@ -30,12 +31,13 @@ export interface Skills {
   items: string[];
 }
 
+// Populate the data objects below.
 export const resume: Resume = {
   information: [
     {
       firstName: "Momen",
       lastName: "Suliman",
-      title: "Software Engineering Student",
+      title: "CS Student & Developer",
       email: "personal.momen@gmail.com",
       phone: "720-751-3617",
       linkedin: "https://www.linkedin.com",
@@ -44,6 +46,7 @@ export const resume: Resume = {
       portraitFile: "/images/portrait.jpg",
       summary:
         "Independently architected and documented a full open-source project from the ground up — no team, no handholding, just a clear vision and the discipline to build it. Stepped up as the de facto lead on a team project, coordinating schema, code, and testing across contributors to deliver a polished result to senior colleagues.",
+      status: "Open to Internships & Full-Time Positions.",
       footerNote:
         "Currently looking to specialize in entry-level Full-Stack Development, Backend Architecture, or Database Systems.",
     },

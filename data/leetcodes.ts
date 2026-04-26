@@ -10,20 +10,21 @@ export interface Leetcode {
     | "Hash Tables"
     | "Trees"
     | "Graphs";
-  status: "Attempted" | "Reviewed" | "Solved";
+  status: "Attempted" | "Solved";
   description: string;
   solution: string;
   leetcodeUrl: string;
   code: string;
 }
 
+// Populate the data objects below.
 export const leetcodes: Leetcode[] = [
   {
     id: 274,
     title: "H-Index",
     difficulty: "Complex",
     category: "Arrays",
-    status: "Reviewed",
+    status: "Solved",
     description:
       "Given an array of citations, calculate the researcher's h-index. This is the maximum value 'h' such that the researcher has published at least 'h' papers that have each been cited at least 'h' times.",
     solution:
@@ -179,7 +180,7 @@ class Solution:
     title: "Merge Intervals",
     difficulty: "Complex",
     category: "Arrays",
-    status: "Reviewed",
+    status: "Solved",
     description:
       "Given an array of intervals where intervals[i] = [start_i, end_i], merge all overlapping intervals and return an array of the non-overlapping intervals that cover all the intervals in the input.",
     solution:

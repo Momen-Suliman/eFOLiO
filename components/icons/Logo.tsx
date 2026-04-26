@@ -1,13 +1,14 @@
-"use client";
 import Link from "next/link";
 import { Geist } from "next/font/google";
 
+// Change font here
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
 
-function Logo({ className = "text-4xl" }: { className?: string }) {
+// Change Logo design here
+export function Logo({ className = "text-4xl" }: { className?: string }) {
   return (
     <Link href="/" className="group">
       <h1
@@ -26,5 +27,3 @@ function Logo({ className = "text-4xl" }: { className?: string }) {
     </Link>
   );
 }
-
-export default Logo;

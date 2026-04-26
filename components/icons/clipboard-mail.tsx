@@ -1,4 +1,4 @@
-const ClipboardMail = ({ className }: { className?: string }) => (
+export const ClipboardMail = ({ className }: { className?: string }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="24"
@@ -43,5 +43,3 @@ const ClipboardMail = ({ className }: { className?: string }) => (
     </g>
   </svg>
 );
-
-export default ClipboardMail;

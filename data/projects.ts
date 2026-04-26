@@ -6,39 +6,41 @@ export interface Project {
   tools: string[];
   image?: string;
   githubUrl: string;
-  internalRoute?: string;
+  route?: string;
   featured: boolean;
 }
 
+// Populate the data objects below.
 export const projects: Project[] = [
   {
     id: 1,
+    title: "Dynamic Weather Dashboard",
+    description:
+      "Real-time weather tracking application utilizing REST APIs and dynamic UI states based on environmental data.",
+    tools: ["React", "OpenWeather API", "Lucide Icons"],
+    image: "/images/weather_app_image.png",
+    githubUrl: "https://github.com/yourusername/weather-app",
+    route: `/projects/weather-app`,
+    featured: true,
+  },
+  {
+    id: 2,
     title: "Full-Stack CRUD App",
     description:
       "A production-ready CRUD application featuring secure authentication and relational database management.",
     tools: ["Next.js", "Supabase", "Prisma", "Tailwind"],
     githubUrl: "https://github.com/yourusername/crud",
-    internalRoute: `/projects/crudapp}`,
+    route: `/projects/crud-app`,
     featured: true,
   },
   {
-    id: 2,
+    id: 3,
     title: "Crypto Miner Simulator",
     description:
       "An interactive visualization of blockchain mechanics, focusing on hashing algorithms and block validation logic.",
     tools: ["Framer Motion", "TypeScript", "React"],
     githubUrl: "https://github.com/yourusername/mining-sim",
-    internalRoute: `/projects/miningsim}`,
-    featured: true,
-  },
-  {
-    id: 3,
-    title: "Dynamic Weather Dashboard",
-    description:
-      "Real-time weather tracking application utilizing REST APIs and dynamic UI states based on environmental data.",
-    tools: ["React", "OpenWeather API", "Lucide Icons"],
-    githubUrl: "https://github.com/yourusername/weather-app",
-    internalRoute: `/projects/weatherapp}`,
+    route: `/projects/mining-sim`,
     featured: true,
   },
   {

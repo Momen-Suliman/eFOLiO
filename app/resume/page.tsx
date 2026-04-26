@@ -1,223 +1,32 @@
-"use client";
-import Image from "next/image";
-import { motion } from "framer-motion";
-import { resume } from "@/data/resume";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardFooter,
-  CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Mail, Phone, Github, Linkedin, ExternalLink } from "lucide-react";
+import { ProfileHeader } from "@/components/resume/profile-header";
+import { EducationSection } from "@/components/resume/education-section";
+import { SkillsBar } from "@/components/resume/skills-bar";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { PageTitle } from "@/components/ui/page-title";
+import { Metadata } from "next";
 
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 16 },
-  animate: { opacity: 1, y: 0 },
-  transition: {
-    duration: 0.65,
-    ease: [0.22, 1, 0.36, 1] as const,
-    delay,
-  },
-});
+const titleOfPage: string = "Personal Profile";
+const titleDesc: string = "A detailed overview of my academic journey";
+
+export const metadata: Metadata = {
+  title: titleOfPage,
+  description: titleDesc, // This overrides the layout description for this page
+};
 
 export default function ResumePage() {
-  const info = resume.information[0];
-  const fullName: string = `${info.firstName} ${info.lastName}`;
-
   return (
     <div className="container mx-auto px-6 py-12">
-      <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pointer-events-none"
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.65, ease: "easeOut" }}
-      >
-        <div className="mb-8">
-          <h1 className="text-4xl tracking-wide font-semibold text-foreground mb-2">
-            Personal Profile
-          </h1>
-          <p className="text-sm text-muted-foreground">
-            A detailed overview of my academic journey
-          </p>
-        </div>
-      </motion.div>
+      <PageTitle title={titleOfPage} desc={titleDesc} />
 
       <Card className="shadow-lg flex flex-col p-5 bg-linear-to-b from-transparent/50 via-transparent/50 to-card/50 overflow-hidden transition-all">
-        <CardHeader className="p-0">
-          <motion.section
-            className="flex flex-col sm:flex-row items-start sm:items-center gap-8 mb-12 pb-5 border-b border-border"
-            {...fadeUp(0.1)}
-          >
-            <div className="relative shrink-0 w-36 h-36 rounded-[33%] overflow-hidden bg-muted ring-2 ring-border pointer-events-none">
-              {info.portraitFile ? (
-                <Image
-                  src={`${info.portraitFile}`}
-                  alt="profile picture"
-                  loading="eager"
-                  fill
-                  className="object-cover"
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center text-2xl font-semibold text-muted-foreground">
-                  {info.firstName
-                    .split(" ")
-                    .map((f) => f[0])
-                    .join("")}
-                </div>
-              )}
-            </div>
-
-            <div dir="rtl" className="flex-1 min-w-0">
-              <h1 className="text-3xl font-semibold text-foreground tracking-tight cursor-default">
-                {fullName}
-              </h1>
-              <p className="text-base text-muted-foreground mt-1 mb-4 cursor-default">
-                {info.title}
-              </p>
-
-              <section className="flex flex-wrap gap-3">
-                <a
-                  href={`mailto:${info.email}`}
-                  className="flex items-center gap-2 px-3 py-1.5 text-xs rounded-md border border-border bg-background hover:bg-accent transition-colors"
-                >
-                  <Mail size={15} className="shrink-0" />
-                  {info.email}
-                </a>
-                <span className="h-6 w-px bg-border"></span>
-                <a
-                  href={`tel:${info.phone}`}
-                  className="flex items-center gap-2 px-3 py-1.5 text-xs rounded-md border border-border bg-background hover:bg-accent transition-colors"
-                >
-                  <Phone size={15} className="shrink-0" />
-                  {info.phone}
-                </a>
-                <span className="h-6 w-px bg-border"></span>
-                <a
-                  href={info.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-3 py-1.5 text-xs rounded-md border border-border bg-background hover:bg-accent transition-colors"
-                >
-                  <Github size={15} className="shrink-0" />
-                  GitHub
-                </a>
-                <span className="h-6 w-px bg-border"></span>
-                <a
-                  href={info.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-3 py-1.5 text-xs rounded-md border border-border bg-background hover:bg-accent transition-colors"
-                >
-                  <Linkedin size={15} className="shrink-0" />
-                  LinkedIn
-                </a>
-                <span className="h-6 w-px bg-border"></span>
-                <a
-                  href={`${info.resumeFile}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-3 py-1.5 text-xs rounded-md border border-border bg-background hover:bg-accent transition-colors"
-                >
-                  <ExternalLink size={15} className="shrink-0" />
-                  Resume PDF
-                </a>
-              </section>
-            </div>
-          </motion.section>
-        </CardHeader>
-
+        <ProfileHeader />
         <CardContent className="p-0 flex-1">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div className="md:col-span-2 flex flex-col gap-10">
-              <motion.section {...fadeUp(0.18)}>
-                <Card className="bg-background/50 pointer-events-none">
-                  <CardHeader>
-                    <CardTitle className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
-                      Academic Experience
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
-                      {info.summary}
-                    </p>
-                  </CardContent>
-                </Card>
-              </motion.section>
-
-              <motion.section {...fadeUp(0.26)}>
-                <Card className="bg-background/50">
-                  <CardHeader>
-                    <CardTitle className="text-xs font-bold uppercase tracking-widest text-muted-foreground pointer-events-none">
-                      Education
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="flex flex-col gap-6">
-                    {resume.education.map((edu, i) => (
-                      <div key={i} className="flex flex-col gap-3">
-                        <div className="flex justify-between items-start gap-4">
-                          <p className="text-md font-medium text-foreground">
-                            {edu.institution}
-                          </p>
-                          <Badge
-                            variant="default"
-                            className="whitespace-nowrap shrink-0 text-xs border-x-amber-400 bg-linear-to-r from-primary to-card/70 pointer-events-none"
-                          >
-                            {edu.graduation}
-                          </Badge>
-                        </div>
-                        <div className="flex flex-wrap justify-end-safe gap-2">
-                          <Badge
-                            variant="secondary"
-                            className="pointer-events-none"
-                          >
-                            {edu.fieldOfStudy}
-                          </Badge>
-                          <Badge
-                            variant="secondary"
-                            className="bg-muted-foreground/30 pointer-events-none"
-                          >
-                            {edu.degree}
-                          </Badge>
-                        </div>
-                      </div>
-                    ))}
-                  </CardContent>
-                </Card>
-              </motion.section>
-            </div>
-
-            <motion.aside {...fadeUp(0.31)}>
-              <Card className="bg-background/50 pointer-events-none">
-                <CardHeader>
-                  <CardTitle className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
-                    Skills
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="flex flex-col gap-6">
-                  {resume.skills.map((group, i) => (
-                    <div key={i}>
-                      <p className="text-xs font-medium italic uppercase tracking-widest text-muted-foreground mb-2.5">
-                        {group.category}
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        {group.items.map((item) => (
-                          <span
-                            key={item}
-                            className="text-xs px-2.5 py-1 rounded-md bg-sidebar-ring/30 text-muted-foreground border border-border"
-                          >
-                            {item}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </CardContent>
-              </Card>
-            </motion.aside>
+            <EducationSection />
+            <SkillsBar />
           </div>
         </CardContent>
+
         <CardFooter className="p-0 border-0 mt-10 cursor-default">
           <p className="text-xs text-muted-foreground text-center w-full">
             For more details, visit our other pages{" "}
@@ -230,9 +39,8 @@ export default function ResumePage() {
             </a>{" "}
             and{" "}
             <a href="/leetcodes" className="text-primary hover:underline">
-              LeetCodes
+              LeetCodes.
             </a>
-            .
           </p>
         </CardFooter>
       </Card>

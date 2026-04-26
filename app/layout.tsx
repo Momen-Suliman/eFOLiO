@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
+import { Background } from "@/components/background";
 import "./globals.css";
-import Background from "@/components/Background";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,10 +15,32 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
+  ? `https://your-actual-domain.com` // Change to your real domain once live
+  : "http://localhost:3000";
+
 export const metadata: Metadata = {
-  title: "eFOLiO",
+  metadataBase: new URL(baseUrl),
+  title: {
+    default: "eFOLiO | Modern CS Portfolio",
+    template: "%s | eFOLiO",
+  },
   description:
     "This Electronic Portfolio showcases academic projects & achievements.",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "/", // Use a relative path
+    siteName: "eFOLiO",
+    images: [
+      {
+        url: "/images/og-image.png", // metadataBase prefixes this automatically
+        width: 1200,
+        height: 630,
+        alt: "eFOLiO Preview Image",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({

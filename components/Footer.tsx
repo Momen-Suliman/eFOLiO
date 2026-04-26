@@ -1,12 +1,12 @@
 "use client";
-import Logo from "@/components/icons/Logo";
-import ClipboardMail from "@/components/icons/clipboard-mail";
+import { Logo } from "@/components/icons/Logo";
+import { ClipboardMail } from "@/components/icons/clipboard-mail";
 import { resume } from "@/data/resume";
-import { Github, Linkedin, Check, FileUser } from "lucide-react";
+import { Linkedin, Check, FileUser } from "lucide-react";
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-function Footer() {
+export function Footer() {
   const currentYear = new Date().getFullYear();
   const email = resume.information[0].email;
   const fullName: string = `${resume.information[0].firstName} ${resume.information[0].lastName}`;
@@ -21,6 +21,11 @@ function Footer() {
     },
   ];
 
+  /*
+   * CROSS-BROWSER CLIPBOARD LOGIC
+   * navigator.clipboard is the modern standard but requires HTTPS.
+   * The 'textArea' fallback ensures copying works on older browsers or local dev.
+   */
   const copyEmail = () => {
     if (navigator.clipboard && window.isSecureContext) {
       navigator.clipboard.writeText(email).then(() => {
@@ -59,8 +64,8 @@ function Footer() {
               href={`${resume.information[0].resumeFile}`}
               aria-label="view external resume"
               target="_blank"
-              dir="ltr"
               rel="noopener noreferrer"
+              dir="ltr"
               className="flex h-9 w-9 items-center justify-center rounded-md border border-border bg-secondary/50 transition-colors hover:bg-accent hover:border-accent-foreground/20 disabled:opacity-50"
             >
               <FileUser className="h-4 w-4 text-foreground" />
@@ -100,13 +105,12 @@ function Footer() {
             {footerNote}
           </p>
           <p className="text-[0.70rem] text-center justify-center text-foreground/65">
-            Copyright © {currentYear} {fullName}. All content, projects, &
-            original materials are protected. All Rights Reserved.
+            Copyright © {currentYear} {fullName}. All Content, Projects, &
+            Original Materials are protected. All Rights Reserved Under PolyForm
+            Noncommercial License 1.0.0.
           </p>
         </div>
       </div>
     </motion.footer>
   );
 }
-
-export default Footer;

@@ -9,6 +9,7 @@ export interface Course {
   image: string;
 }
 
+// Populate the data objects below.
 export const courses: Course[] = [
   {
     id: 1,
@@ -29,7 +30,7 @@ export const courses: Course[] = [
     semester: "Spring 2025",
     category: "Computer Science",
     description:
-      "Learned the basics of large-scale software development, including lifecycles, object-oriented techniques, and automation. Practiced TDD/BDD testing, error analysis, and performance tuning through a significant group project.",
+      "Learned the basics of large-scale software development, including life cycles, object-oriented techniques, and automation. Practiced TDD/BDD testing, error analysis, and performance tuning through a significant group project.",
     image: "/images/cs3250.jpg",
   },
   {

@@ -95,7 +95,7 @@ export default function HeroSection() {
             >
               <Link
                 href="/projects"
-                className="rounded-md bg-linear-to-r from-ring to-logo px-3.5 py-2.5 text-sm font-semibold text-primary-foreground shadow-xs hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring transition-opacity"
+                className="rounded-full bg-linear-to-r from-ring to-logo px-3.5 py-2.5 text-sm font-semibold text-primary-foreground shadow-xs hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring transition-opacity"
               >
                 View Projects
               </Link>

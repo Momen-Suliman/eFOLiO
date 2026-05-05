@@ -69,7 +69,7 @@ export const CourseCard = () => {
     >
       <Card
         key={course.id}
-        className="shadow-lg flex flex-col min-h-full pb-0 pt-0 overflow-hidden transition-all hover:shadow-lg hover:border-primary/50 cursor-pointer select-none"
+        className="shadow-lg flex flex-col min-h-full pb-1 pt-0 gap-3 overflow-hidden transition-all hover:shadow-lg hover:border-primary/50 cursor-pointer select-none"
         onClick={() =>
           setSelectedCourse((prevId) =>
             prevId === course.id ? null : course.id,
@@ -175,7 +175,7 @@ export const CourseCard = () => {
           </>
         )}
 
-        <CardFooter className="flex items-center justify-between border-t pt-4 pb-6 bg-card/30">
+        <CardFooter className="flex items-center justify-between border-t pt-2 bg-card/30">
           <Badge variant="secondary" className="text-xs">
             {course.category}
           </Badge>
@@ -183,6 +183,9 @@ export const CourseCard = () => {
             {course.semester}
           </span>
         </CardFooter>
+        <div className="text-center text-xs text-muted-foreground pointer-events-none">
+          Click to View Details
+        </div>
       </Card>
     </motion.div>
   ));

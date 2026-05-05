@@ -65,7 +65,7 @@ export const FeaturedProjects = () => {
                       {project.route && (
                         <Link
                           href={project.route}
-                          className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 px-3 py-1.5 text-xs rounded-md border border-border bg-linear-to-r from-logo/20 to-card cursor-pointer"
+                          className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 px-3 py-1.5 text-xs rounded-full border border-border bg-linear-to-r from-logo/20 to-card cursor-pointer"
                         >
                           LAUNCH
                         </Link>

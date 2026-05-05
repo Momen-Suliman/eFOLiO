@@ -106,7 +106,7 @@ If you have a complex single page application project that needs its own dedicat
 2. Add a `page.tsx` inside the project folder you just created.
 3. In `data/projects.ts`, add the project to the list (`featured: true`) & set the `href` of that project to `/projects/[your-project-name]`.
 
-#### Removing the LeetCode Page/Feature
+#### Removing the LeetCodes Page/Feature
 
 If you don't want to showcase LeetCode solutions:
 

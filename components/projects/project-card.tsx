@@ -23,68 +23,79 @@ export const ProjectCard = () => {
         transition={{ duration: 0.8, ease: "easeIn" }}
       >
         <h3 className="text-center text-2xl font-normal text-sidebar-foreground mb-0">
-          Technical Archive
+          {"Technical Archive"}
         </h3>
         <div className="text-center text-xs pt-0 text-muted-foreground pointer-events-none">
-          Click to Access Repository
+          {"Click to Access Repository"}
         </div>
       </motion.div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {archived.map((project) => (
-          <motion.div
-            className="flex justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-            key={project.id}
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              duration: 0.8,
-              ease: "easeIn",
-              delay: 0.2 + project.id * 0.09,
-            }}
-          >
-            <Card className="pb-0 pt-0 flex flex-col justify-start hover:shadow-lg hover:border-primary/50">
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <CardHeader className="pt-4 [.border-b]:pb-1 items-center border-b">
-                  <div className="flex justify-between items-center gap-2">
-                    <CardTitle className="text-sm font-semibold text-foreground leading-snug">
-                      <div>{project.title}</div>
-                    </CardTitle>
-                    <div
-                      aria-hidden="true"
-                      tabIndex={-1}
-                      className="text-muted-foreground hover:text-foreground transition-colors shrink-0"
-                    >
-                      <Github size={15} />
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent className="flex flex-col gap-3 pt-3 pb-6">
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    {project.description}
-                  </p>
-                </CardContent>
-                <CardFooter className="px-3 pb-3 border-t bg-card/30">
-                  <div className="p-0 flex flex-wrap gap-1.5 cursor-default">
-                    {project.tools.map((tool) => (
-                      <Badge
-                        key={tool}
-                        variant="outline"
-                        className="text-xs bg-accent"
+        {archived.map((project) => {
+          const allTech = [
+            ...(project.techStack.languages || []),
+            ...(project.techStack.tools || []),
+            ...(project.techStack.librariesAndFrameworks || []),
+          ];
+
+          return (
+            <motion.div
+              className="flex justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+              key={project.id}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{
+                duration: 0.8,
+                ease: "easeIn",
+                delay: 0.2 + project.id * 0.09,
+              }}
+            >
+              <Card className="pb-0 pt-0 flex flex-col min-h-full hover:shadow-lg hover:border-primary/50">
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col flex-1 h-full min-h-0"
+                >
+                  <CardHeader className="pt-4 [.border-b]:pb-1 items-center border-b">
+                    <div className="w-full flex justify-between items-center gap-2">
+                      <CardTitle className="text-sm font-semibold text-foreground leading-snug">
+                        <div>{project.title}</div>
+                      </CardTitle>
+                      <div
+                        aria-hidden="true"
+                        tabIndex={-1}
+                        className="text-muted-foreground hover:text-foreground transition-colors shrink-0"
                       >
-                        {tool}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardFooter>
-              </a>
-            </Card>
-          </motion.div>
-        ))}
+                        <Github size={15} />
+                      </div>
+                    </div>
+                  </CardHeader>
+
+                  <CardContent className="flex flex-col gap-3 pt-3 pb-6">
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      {project.description}
+                    </p>
+                  </CardContent>
+
+                  <CardFooter className="px-3 pb-3 border-t bg-card/30 flex-1 flex flex-col justify-end">
+                    <div className="w-full p-0 flex flex-wrap gap-1.5 justify-start">
+                      {allTech.map((tech) => (
+                        <Badge
+                          key={tech}
+                          variant="outline"
+                          className="text-xs bg-accent"
+                        >
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardFooter>
+                </a>
+              </Card>
+            </motion.div>
+          );
+        })}
       </div>
     </>
   );

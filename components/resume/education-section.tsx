@@ -1,11 +1,17 @@
 "use client";
 import { motion } from "framer-motion";
-import { Card, CardHeader, CardTitle, CardContent } from "../ui/card";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  CardFooter,
+} from "../ui/card";
 import { Badge } from "@/components/ui/badge";
 import { resume } from "@/data/resume";
 
 export const EducationSection = () => {
-  const info = resume.information[0];
+  const info = resume.information[0].summary;
 
   return (
     <div className="md:col-span-2 flex flex-col gap-10">
@@ -14,17 +20,26 @@ export const EducationSection = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
       >
-        <Card className="bg-background/50 pointer-events-none">
+        <Card className="bg-background/50 cursor-default">
           <CardHeader>
             <CardTitle className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
-              Academic Experience
+              Experience
             </CardTitle>
           </CardHeader>
           <CardContent>
             <p className="text-sm leading-relaxed text-muted-foreground">
-              {info.summary}
+              {info}
             </p>
           </CardContent>
+          <CardFooter className="p-0 border-0 mt-0 cursor-default">
+            <p className="text-xs text-muted-foreground text-center w-full">
+              Visit{" "}
+              <a href="/projects" className="text-primary hover:underline">
+                Projects
+              </a>{" "}
+              for technical details.
+            </p>
+          </CardFooter>
         </Card>
       </motion.section>
 

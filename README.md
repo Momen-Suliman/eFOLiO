@@ -1,6 +1,6 @@
 # eFOLiO
 
-**A production-grade, high-performance & low-maintenance electronic portfolio App Shell built to help CS students showcase their technical achievements and engineering milestones.**
+**A starter-friendly, high-performance portfolio app shell for developers and CS students who want a polished foundation they can fully reshape into a personal experience.**
 
 ---
 
@@ -12,29 +12,27 @@
 
 ### 💼 Project Mission
 
-**eFOLiO** was engineered to solve the _"Portfolio Paradox"_: the irony of developers spending more time building a platform to showcase their work than actually working on the projects themselves. **eFOLiO** bridges this gap, letting computer science students focus on technical contributions while the platform handles the presentation. By 'App Shell,' we refer to a pre-architected environment where the presentation logic is strictly decoupled from the data layer, allowing for full rebrandability without code regression.
+**eFOLiO** was built to solve the “Portfolio Paradox”: spending too much time building a website instead of focusing on the work you want to showcase. This starter shell gives you a clean base so you can move quickly, then customize every part until the result feels like your own.
 
-**eFOLiO** provides a robust, production-ready app shell that streamlines the development of complex SPAs. By providing a pre-configured environment, the platform eliminates boilerplate and ensures high-level technical standards out of the box:
+You are not locked into the current layout, content, or structure. You can add, edit, swap, delete, or rebuild any section of the app—from the hero section and route pages to the data files and styling—until you achieve your personal version.
 
-- **Flexible Rebrandability:** Allows you to tailor the aesthetic to your personal brand while maintaining structural integrity.
-- **Type-Safe Environment:** Full TypeScript integration for reliable, error-free development.
-- **Optimized Routing:** Pre-configured routing for seamless navigation and performance.
-- **Performance-First:** Built-in optimizations to ensure fast load times and smooth interactions.
-- **UI Consistency:** A standardized design system for a cohesive, professional interface.
+**eFOLiO** provides a robust starting point for building a polished portfolio with:
+
+- **Flexible Rebrandability:** Tailor the aesthetic to your personal brand while keeping a strong structure.
+- **Type-Safe Environment:** Full TypeScript support for reliable development.
+- **Optimized Routing:** Pre-configured navigation for a smooth single-page experience.
+- **Performance-First:** Fast interactions and lightweight UI composition.
+- **UI Consistency:** A modern design system that can be adapted to fit your voice.
 
 ---
 
 ### 📐 Architectural Highlights
 
-- **Next.js 16 App Router:** Utilizes the latest Server Components and nested layout patterns to minimize client-side JavaScript/TypeScript and optimize Core Web Vitals.
-
-- **Zero-Runtime CSS:** Built with Tailwind CSS v4, leveraging its new high-performance engine for faster builds and smaller CSS bundles.
-
-- **Type-Safe Data Layer:** Built entirely on TypeScript. The application uses a "Data-to-UI" architecture where site content is decoupled from components, ensuring maintainability and scalability.
-
-- **Motion Engineering:** Implements Framer Motion for 60fps micro-interactions and layout transitions, providing a high-fidelity user experience without sacrificing performance.
-
-- **Modular SPA Support:** Designed to host internal Single Page Applications (SPAs) as sub-routes, allowing for a "monolith-style" portfolio that can showcase multiple complex projects in one environment.
+- **Next.js 16 App Router:** Uses the App Router for clean page composition and modern rendering patterns.
+- **Zero-Runtime CSS:** Built with Tailwind CSS v4 for a fast, maintainable styling approach.
+- **Type-Safe Data Layer:** The portfolio content is kept separate from the UI so it is easy to swap, expand, or replace.
+- **Motion Engineering:** Framer Motion adds polished transitions without overcomplicating the structure.
+- **Modular SPA Support:** The app can host multiple project sub-routes within one cohesive experience.
 
 ---
 
@@ -42,26 +40,26 @@
 
 | Domain          | Technology                                                          | Implementation Detail                                      |
 | :-------------- | :------------------------------------------------------------------ | :--------------------------------------------------------- |
-| **Framework**   | [Next.js 16 (App Router)](https://nextjs.org)                       | App Router, Server Actions, and dynamic metadata.          |
+| **Framework**   | [Next.js 16 (App Router)](https://nextjs.org)                       | App Router and dynamic metadata.                         |
 | **Language**    | [TypeScript](https://www.typescriptlang.org)                        | Strict typing for data structures and component props.     |
-| **Styling**     | [Tailwind CSS v4](https://tailwindcss.com)                          | Modern CSS-in-JS alternative with zero-runtime overhead.   |
-| **UI/UX**       | [Shadcn UI](https://ui.shadcn.com/docs)                             | Radix-based accessible primitives for professional design. |
-| **Performance** | [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview) | Performance testing for code, component & content load.    |
-| **Deployment**  | [Vercel](https://vercel.com)                                        | CI/CD pipeline with automated edge-network distribution.   |
+| **Styling**     | [Tailwind CSS v4](https://tailwindcss.com)                          | Utility-first styling with a modern build pipeline.       |
+| **UI/UX**       | [Shadcn UI](https://ui.shadcn.com/docs)                             | Accessible UI primitives for a polished presentation.    |
+| **Performance** | [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview) | Performance testing for content and component load.       |
+| **Deployment**  | [Vercel](https://vercel.com)                                        | Simple deployment path for a personal portfolio.         |
 
 ---
 
 ### 💭 Design Philosophy
 
-- **Developer Experience (DX):** While the end product is optimized for CS students, the codebase is designed with source-available standards in mind. It is architected for readability and reusability, serving as a clean, documented template that other engineers can easily fork, understand, and extend.
-
-- **Data Independence (Decoupled & Agnostic):** To bypass the inexistence of third-party APIs (such as LeetCode or academic portals), **eFOLiO** uses a "Data-First" approach. Users have full ownership of their data via local JSON structures. This ensures your portfolio is easily accessible, remains evergreen and performant, while being modular enough to plug into external APIs should they become available.
+- **Starter Shell:** This project is intentionally easy to modify. You can replace the sample copy, change the layout, or rebuild any section from the source code.
+- **Data Independence:** The portfolio content lives in local TypeScript data files so you can swap it out without rewriting the page structure.
+- **Personalization Over Lock-In:** The goal is to help you move from starter content to a finished portfolio quickly.
 
 ---
 
 ### 💻 Project Impact
 
-**eFOLiO** is currently a full source-available release. The goal is to provide a standardized, professional-grade starting point for the next generation of Computer Science students to implement & showcase their technical achievements.
+**eFOLiO** is a source-available starter shell meant to help developers move from an idea to a polished personal portfolio without spending unnecessary time on boilerplate.
 
 ---
 

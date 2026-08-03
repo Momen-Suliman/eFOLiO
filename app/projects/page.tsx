@@ -9,14 +9,13 @@ const titleDesc: string =
 
 export const metadata: Metadata = {
   title: titleOfPage,
-  description: titleDesc, // This overrides the layout description for this page
+  description: titleDesc,
 };
 
 export default function ProjectsPage() {
   return (
     <div className="container mx-auto px-6 py-12">
       <PageTitle title={titleOfPage} desc={titleDesc} />
-
       <FeaturedProjects />
       <ProjectCard />
     </div>

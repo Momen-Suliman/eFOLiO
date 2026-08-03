@@ -1,50 +1,34 @@
 "use client";
 import Link from "next/link";
 import { Logo } from "@/components/icons/Logo";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
-import { Github, Menu, Moon, Sun } from "lucide-react";
+import { Github, Menu } from "lucide-react";
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuList,
 } from "./ui/navigation-menu";
-import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "./ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetTitle,
+  SheetTrigger,
+} from "./ui/sheet";
 import { resume } from "@/data/resume";
 import { links } from "@/data/navigation";
+import { ThemeToggle } from "./home/theme-toggle";
 
 export function Header() {
   const pathname = usePathname();
   const [hoveredPath, setHoveredPath] = useState<string | null>(null);
-  const [theme, setTheme] = useState<"light" | "dark" | null>(null);
   const [sheetOpen, setSheetOpen] = useState(false);
+
   const gitHubLinks = [
     { icon: Github, label: "GitHub", href: `${resume.information[0].github}` },
   ];
-
-  useEffect(() => {
-    const isDark = document.documentElement.classList.contains("dark");
-    setTheme(isDark ? "dark" : "light");
-  }, []);
-
-  /*
-   * THEME TOGGLE LOGIC
-   * Syncs the UI with the 'dark' class on the HTML element.
-   * We use localStorage to persist the choice across sessions.
-   */
-  const toggleTheme = () => {
-    if (!theme) return;
-
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
-    if (newTheme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  };
 
   return (
     <motion.header
@@ -71,11 +55,10 @@ export function Header() {
                           className="relative cursor-pointer px-4 py-2 text-sm font-medium transition-colors"
                         >
                           <span
-                            className={`relative cursor-pointer z-10 ${
-                              isActive
-                                ? "text-primary-foreground"
-                                : "text-foreground hover:text-primary"
-                            }`}
+                            className={`relative cursor-pointer z-10 ${isActive
+                              ? "text-primary-foreground"
+                              : "text-foreground hover:text-primary"
+                              }`}
                           >
                             {link.name}
                           </span>
@@ -105,8 +88,11 @@ export function Header() {
                   className="bg-background/30 backdrop-blur-sm h-fit w-2/3 border-b rounded-2xl mr-[1.5vh] mt-[1.5vh] flex flex-col p-0"
                 >
                   <SheetTitle className="bg-ring/20 text-xl text-logo tracking-wider font-medium border-b rounded-t-2xl py-2 items-center justify-center text-center">
-                    Main Menu
+                    {"Main Menu"}
                   </SheetTitle>
+                  <SheetDescription className="sr-only">
+                    {"Site navigation links"}
+                  </SheetDescription>
                   <nav className="flex flex-col flex-1 gap-4 items-center justify-evenly pb-5">
                     {links.map((link) => (
                       <Link
@@ -140,38 +126,7 @@ export function Header() {
                 </a>
               );
             })}
-
-            <button
-              onClick={toggleTheme}
-              disabled={theme === null}
-              className="group relative flex cursor-pointer h-9 w-9 items-center justify-center rounded-lg border border-border bg-secondary/50 transition-colors hover:bg-accent hover:border-accent-foreground/20 disabled:opacity-50"
-              aria-label="Toggle theme"
-            >
-              <motion.div
-                initial={false}
-                animate={{
-                  scale: theme === "dark" ? 0 : 1,
-                  rotate: theme === "dark" ? 180 : 0,
-                  opacity: theme === "dark" ? 0 : 1,
-                }}
-                transition={{ duration: 0.3 }}
-                className="absolute"
-              >
-                <Sun className="h-4 w-4 text-foreground group-hover:text-primary" />
-              </motion.div>
-              <motion.div
-                initial={false}
-                animate={{
-                  scale: theme === "light" ? 0 : 1,
-                  rotate: theme === "light" ? -180 : 0,
-                  opacity: theme === "light" ? 0 : 1,
-                }}
-                transition={{ duration: 0.3 }}
-                className="absolute"
-              >
-                <Moon className="h-4 w-4 text-foreground group-hover:text-primary" />
-              </motion.div>
-            </button>
+            <ThemeToggle />
           </div>
         </div>
       </div>

@@ -7,14 +7,13 @@ const titleDesc: string = "My collection of solved algorithmic problems";
 
 export const metadata: Metadata = {
   title: titleOfPage,
-  description: titleDesc, // This overrides the layout description for this page
+  description: titleDesc,
 };
 
 export default function LeetcodesPage() {
   return (
     <div className="container mx-auto px-6 py-12">
       <PageTitle title={titleOfPage} desc={titleDesc} />
-
       <LeetcodesContent />
     </div>
   );

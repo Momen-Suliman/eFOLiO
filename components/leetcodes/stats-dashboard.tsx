@@ -10,6 +10,7 @@ import {
   YAxis,
   Tooltip,
   CartesianGrid,
+  PieLabelRenderProps,
 } from "recharts";
 import { Card, CardHeader, CardTitle, CardContent } from "../ui/card";
 import { leetcodes } from "@/data/leetcodes";
@@ -45,7 +46,7 @@ export const StatsDashboard = () => {
       count: leetcodes.filter((lc) => lc.category === "Stacks").length,
     },
     {
-      name: "Queue",
+      name: "Queues",
       count: leetcodes.filter((lc) => lc.category === "Queues").length,
     },
     {
@@ -76,7 +77,7 @@ export const StatsDashboard = () => {
       >
         <Card className="min-h-87.5 max-h-87.5 bg-background/30 pointer-events-none">
           <CardHeader>
-            <CardTitle>Difficulty Distribution</CardTitle>
+            <CardTitle>{"Difficulty Distribution"}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="flex items-center gap-4">
@@ -88,8 +89,8 @@ export const StatsDashboard = () => {
                       cx="50%"
                       cy="50%"
                       labelLine={true}
-                      label={(props: any) => {
-                        const { percent } = props;
+                      label={(props: PieLabelRenderProps) => {
+                        const percent = props.percent ?? 0;
                         return `${(percent * 100).toFixed(0)}%`;
                       }}
                       outerRadius="70%"
@@ -127,7 +128,7 @@ export const StatsDashboard = () => {
                     {solvedCount} / {totalProblems}
                   </p>
                   <p className="text-xs text-muted-foreground">
-                    Problems Solved
+                    {"Problems Solved"}
                   </p>
                 </div>
               </div>
@@ -148,7 +149,7 @@ export const StatsDashboard = () => {
       >
         <Card className="min-h-87.5 max-h-87.5 bg-background/30 pointer-events-none">
           <CardHeader>
-            <CardTitle>Categories</CardTitle>
+            <CardTitle>{"Categories"}</CardTitle>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>

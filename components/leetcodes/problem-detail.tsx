@@ -68,13 +68,13 @@ export const ProblemDetail = ({ problemId, onBack }: ProblemDetailProps) => {
         <Card className="flex-1 bg-background/30 overflow-hidden cursor-default">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-base font-semibold">
-              Problem Description
+              {"Problem Description"}
             </CardTitle>
             <button
               onClick={onBack}
               className="text-sm text-primary flex items-center gap-2 cursor-pointer"
             >
-              ← Back to Dashboard
+              {"← Back to Dashboard"}
             </button>
           </CardHeader>
           <CardContent className="overflow-y-auto max-h-37.5">
@@ -86,7 +86,7 @@ export const ProblemDetail = ({ problemId, onBack }: ProblemDetailProps) => {
 
         <Card className="flex-1 bg-background/30 overflow-hidden cursor-default">
           <CardHeader className="pb-0">
-            <CardTitle>My Solution</CardTitle>
+            <CardTitle>{"My Solution"}</CardTitle>
           </CardHeader>
           <CardContent className="overflow-y-auto max-h-37.5">
             <p className="text-sm text-foreground leading-relaxed">
@@ -99,7 +99,7 @@ export const ProblemDetail = ({ problemId, onBack }: ProblemDetailProps) => {
           <CardHeader>
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-1">
               <CardTitle className="pointer-events-none">
-                Implementation
+                {"Implementation"}
               </CardTitle>
               <div className="flex flex-wrap gap-2">
                 <button
@@ -107,7 +107,7 @@ export const ProblemDetail = ({ problemId, onBack }: ProblemDetailProps) => {
                   tabIndex={-1}
                   className="flex items-center gap-2 px-3 py-1.5 text-xs rounded-md border border-border bg-background text-foreground transition-colors pointer-events-none"
                 >
-                  Python3
+                  {"Python3"}
                 </button>
                 <button
                   onClick={copyCode}
@@ -116,12 +116,12 @@ export const ProblemDetail = ({ problemId, onBack }: ProblemDetailProps) => {
                   {copied ? (
                     <>
                       <Check className="h-4 w-4 text-green-500" />
-                      Code Copied
+                      {"Code Copied"}
                     </>
                   ) : (
                     <>
                       <Copy className="h-3 w-3" />
-                      Copy Code
+                      {"Copy Code"}
                     </>
                   )}
                 </button>
@@ -130,7 +130,7 @@ export const ProblemDetail = ({ problemId, onBack }: ProblemDetailProps) => {
                   className="flex items-center gap-2 px-3 py-1.5 text-xs rounded-md border border-border bg-accent hover:bg-sidebar-ring transition-colors cursor-pointer"
                 >
                   <ExternalLink className="h-3 w-3" />
-                  Try on LeetCode
+                  {"Try on LeetCode"}
                 </button>
               </div>
             </div>

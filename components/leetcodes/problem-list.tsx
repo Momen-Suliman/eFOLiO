@@ -27,7 +27,7 @@ export const ProblemList = ({ selectedId, onSelect }: ProblemListProps) => {
     >
       <Card className="min-h-181 max-h-181 bg-background/30">
         <CardHeader>
-          <CardTitle className="text-xl">Problems' List</CardTitle>
+          <CardTitle className="text-xl">{"Problems' List"}</CardTitle>
         </CardHeader>
         <CardContent className="space-y-3 grow min-h-0 overflow-y-auto">
           {leetcodes.map((problem) => (
@@ -49,7 +49,7 @@ export const ProblemList = ({ selectedId, onSelect }: ProblemListProps) => {
               <div className="bg-background p-4 flex-1 grid grid-cols-3 gap-3 text-sm">
                 <div className="rounded-lg border border-border bg-muted/30 flex flex-col items-center justify-center gap-0.5 p-2 sm:flex-row sm:gap-1">
                   <span className="text-muted-foreground text-xs">
-                    Difficulty
+                    {"Difficulty"}
                   </span>
                   <span
                     className={`text-xs sm:text-sm text-center ${
@@ -64,7 +64,7 @@ export const ProblemList = ({ selectedId, onSelect }: ProblemListProps) => {
 
                 <div className="rounded-lg border border-border bg-muted/30 flex flex-col items-center justify-center gap-0.5 p-2 sm:flex-row sm:gap-1">
                   <span className="text-muted-foreground text-xs">
-                    Category
+                    {"Category"}
                   </span>
                   <span className="text-xs sm:text-sm text-center text-foreground font-medium">
                     {problem.category}
@@ -88,7 +88,7 @@ export const ProblemList = ({ selectedId, onSelect }: ProblemListProps) => {
           ))}
         </CardContent>
         <CardFooter className="text-center text-sm text-muted-foreground pointer-events-none">
-          Click on a problem to view details
+          {"Click on a problem to view details"}
         </CardFooter>
       </Card>
     </motion.div>

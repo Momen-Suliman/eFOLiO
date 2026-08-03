@@ -17,6 +17,7 @@ import {
 
 export const CourseCard = () => {
   const [selectedCourse, setSelectedCourse] = useState<number | null>(null);
+
   const getGradeColor = (grade: string) => {
     switch (grade) {
       case "A+":
@@ -25,21 +26,18 @@ export const CourseCard = () => {
         return "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20";
       case "A-":
         return "bg-lime-500/10 text-lime-600 dark:text-lime-400 border-lime-500/20";
-
       case "B+":
         return "bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border-cyan-500/20";
       case "B":
         return "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20";
       case "B-":
         return "bg-slate-500/10 text-slate-600 dark:text-slate-400 border-slate-500/20";
-
       case "C+":
         return "bg-yellow-500/10 text-yellow-700 dark:text-yellow-400 border-yellow-500/20";
       case "C":
         return "bg-amber-400/10 text-amber-700 dark:text-amber-300 border-amber-400/20";
       case "C-":
         return "bg-orange-500/10 text-orange-700 dark:text-orange-400 border-orange-500/20";
-
       default:
         return "bg-muted text-muted-foreground";
     }
@@ -53,22 +51,17 @@ export const CourseCard = () => {
     return description.substring(0, maxLength).trim() + "...";
   };
 
-  // Add the Course code of the algorithms class below to link it to /leetcodes or a different route
-  const algorithms = "CS4050";
+  // set to your algorithms course number to redirect the course card to the /leetcodes page OR set it to empty if you're not using the leetcodes feature.
+  const algorithmsCourse = "CS4050";
 
   return courses.map((course, index) => (
     <motion.div
       key={course.id}
       initial={{ opacity: 0, scale: 0.97 }}
       animate={{ opacity: 1, scale: 1 }}
-      transition={{
-        duration: 0.7,
-        ease: "easeIn",
-        delay: 0.2 + index * 0.09,
-      }}
+      transition={{ duration: 0.7, ease: "easeIn", delay: 0.2 + index * 0.09 }}
     >
       <Card
-        key={course.id}
         className="shadow-lg flex flex-col min-h-full pb-1 pt-0 gap-3 overflow-hidden transition-all hover:shadow-lg hover:border-primary/50 cursor-pointer select-none"
         onClick={() =>
           setSelectedCourse((prevId) =>
@@ -88,7 +81,14 @@ export const CourseCard = () => {
         }}
       >
         <div className="relative h-48 w-full bg-muted">
-          <Image src={course.image} alt="" fill className="object-cover" />
+          <Image
+            src={course.image}
+            alt="decorative image"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            loading="eager"
+            className="object-cover"
+          />
         </div>
 
         <CardHeader>
@@ -106,22 +106,28 @@ export const CourseCard = () => {
         </CardHeader>
 
         {selectedCourse === course.id ? (
-          <>
-            <CardContent className="flex-1 min-h-30 pt-0">
-              <div className="flex items-center gap-2 mb-3 mt-2">
-                <div className="h-px flex-1 bg-border" />
-                <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold">
-                  Course Projects
-                </span>
-                <div className="h-px flex-1 bg-border" />
-              </div>
+          <CardContent className="flex-1 min-h-30 pt-0">
+            <div className="flex items-center gap-2 mb-3 mt-2">
+              <div className="h-px flex-1 bg-border" />
+              <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold">
+                {"Course Projects"}
+              </span>
+              <div className="h-px flex-1 bg-border" />
+            </div>
 
-              <div className="space-y-2 overflow-y-auto max-h-40 pr-2 custom-scrollbar">
-                {projects.filter((p) => p.courseCode === course.code).length >
-                0 ? (
-                  projects
-                    .filter((p) => p.courseCode === course.code)
-                    .map((project) => (
+            <div className="space-y-2 overflow-y-auto max-h-40 pr-2 custom-scrollbar">
+              {projects.filter((p) => p.courseCode === course.code).length >
+              0 ? (
+                projects
+                  .filter((p) => p.courseCode === course.code)
+                  .map((project) => {
+                    const flatTech = [
+                      ...(project.techStack.languages || []),
+                      ...(project.techStack.tools || []),
+                      ...(project.techStack.librariesAndFrameworks || []),
+                    ];
+
+                    return (
                       <a
                         key={project.id}
                         href={project.githubUrl}
@@ -137,42 +143,40 @@ export const CourseCard = () => {
                               {project.title}
                             </span>
                             <span className="text-[10px] text-muted-foreground line-clamp-1">
-                              {project.tools.slice(0, 2).join(" • ")}
+                              {flatTech.slice(0, 2).join(" • ") ||
+                                "No tech listed"}
                             </span>
                           </div>
                         </div>
-
                         <ExternalLink className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity text-primary" />
                       </a>
-                    ))
-                ) : (
-                  <div className="flex flex-col items-center justify-center py-4 text-center">
-                    <p className="text-[10px] text-muted-foreground italic">
-                      {course.code == algorithms ? (
-                        <a
-                          href="/leetcodes"
-                          onClick={(e) => e.stopPropagation()}
-                          className="text-[.85rem] px-3 py-2 text-xs bg-primary text-primary-foreground rounded-md hover:opacity-90 inline-block"
-                        >
-                          View LeetCodes
-                        </a>
-                      ) : (
-                        "No projects archived for this course yet."
-                      )}
-                    </p>
-                  </div>
-                )}
-              </div>
-            </CardContent>
-          </>
+                    );
+                  })
+              ) : (
+                <div className="flex flex-col items-center justify-center py-4 text-center">
+                  <p className="text-[10px] text-muted-foreground italic">
+                    {course.code === algorithmsCourse ? (
+                      <a
+                        href="/leetcodes"
+                        onClick={(e) => e.stopPropagation()}
+                        className="text-[.85rem] px-3 py-2 text-xs bg-primary text-primary-foreground rounded-md hover:opacity-90 inline-block"
+                      >
+                        {"View LeetCodes"}
+                      </a>
+                    ) : (
+                      "No projects archived for this course yet."
+                    )}
+                  </p>
+                </div>
+              )}
+            </div>
+          </CardContent>
         ) : (
-          <>
-            <CardContent className="flex-1 min-h-30">
-              <p className="text-sm text-muted-foreground">
-                {truncateDescription(course.description, 250)}
-              </p>
-            </CardContent>
-          </>
+          <CardContent className="flex-1 min-h-30">
+            <p className="text-sm text-muted-foreground">
+              {truncateDescription(course.description, 250)}
+            </p>
+          </CardContent>
         )}
 
         <CardFooter className="flex items-center justify-between border-t pt-2 bg-card/30">
@@ -183,8 +187,8 @@ export const CourseCard = () => {
             {course.semester}
           </span>
         </CardFooter>
-        <div className="text-center text-xs text-muted-foreground pointer-events-none">
-          Click to View Details
+        <div className="text-center text-xs text-muted-foreground pointer-events-none pb-2">
+          {"Click to View Details"}
         </div>
       </Card>
     </motion.div>

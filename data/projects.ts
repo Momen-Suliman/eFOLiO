@@ -1,160 +1,108 @@
+//populate your projects below, if you'd like to showcase (build it within the webapp as an SPA) the project in the carousel set featured: true, ensure you add any language, library or framework to skills.ts before including here for dynamic interactions.
 export interface Project {
   id: number;
   title: string;
   courseCode?: string;
   description: string;
-  tools: string[];
   image?: string;
   githubUrl: string;
   route?: string;
   featured: boolean;
+  techStack: {
+    languages?: string[];
+    tools?: string[];
+    librariesAndFrameworks?: string[];
+  };
 }
 
-// Populate the data objects below.
 export const projects: Project[] = [
   {
     id: 1,
-    title: "Dynamic Weather Dashboard",
+    title: "Starter Portfolio Shell",
     description:
-      "Real-time weather tracking application utilizing REST APIs and dynamic UI states based on environmental data.",
-    tools: ["React", "OpenWeather API", "Lucide Icons"],
-    image: "/images/weather_app_image.png",
-    githubUrl: "https://github.com/yourusername/weather-app",
-    route: `/projects/weather-app`,
+      "A polished starter shell for building a personal portfolio. Replace the sample content with your own story, projects, and contact details.",
+    image: "/images/efolio.png",
+    githubUrl: "https://github.com/Momen-Suliman/eFOLiO",
+    route: `/projects/efolio`,
     featured: true,
+    techStack: {
+      languages: ["TypeScript"],
+      librariesAndFrameworks: [
+        "Next.js",
+        "React",
+        "Tailwind CSS",
+        "Framer Motion",
+        "Shadcn/UI",
+      ],
+    },
   },
   {
     id: 2,
-    title: "Full-Stack CRUD App",
+    title: "Weather Dashboard",
     description:
-      "A production-ready CRUD application featuring secure authentication and relational database management.",
-    tools: ["Next.js", "Supabase", "Prisma", "Tailwind"],
-    githubUrl: "https://github.com/yourusername/crud",
-    route: `/projects/crud-app`,
+      "An example weather app layout that can be reshaped into your own UI, data source, or API integration project.",
+    image: "/images/weather_app_image.png",
+    githubUrl: "https://github.com/your-name/weather-dashboard",
+    route: `/projects/weather-app`,
     featured: true,
+    techStack: {
+      languages: ["TypeScript"],
+      librariesAndFrameworks: ["React", "Next.js"],
+    },
   },
   {
     id: 3,
-    title: "Crypto Miner Simulator",
+    title: "Student Management Hub",
+    courseCode: "CS3710",
     description:
-      "An interactive visualization of blockchain mechanics, focusing on hashing algorithms and block validation logic.",
-    tools: ["Framer Motion", "TypeScript", "React"],
-    githubUrl: "https://github.com/yourusername/mining-sim",
-    route: `/projects/mining-sim`,
+      "A sample CRUD-style application that demonstrates how to structure a student dashboard, data relationships, and a simple admin experience.",
+    image: "/images/sms.png",
+    githubUrl: "https://github.com/your-name/student-management-hub",
+    route: `/projects/crud-app`,
     featured: true,
+    techStack: {
+      languages: ["Ruby", "TypeScript"],
+      tools: ["Vite", "SQLite"],
+      librariesAndFrameworks: ["Ruby on Rails", "React"],
+    },
   },
   {
     id: 4,
-    title: "Banking System",
-    courseCode: "CS3250",
+    title: "Compiler Basics",
+    courseCode: "CS3210",
     description:
-      "A Java-based banking simulation using custom generic Stack and Queue implementations for account and customer management. Features automated transaction processing for Checking and Savings accounts with results exported to text files, demonstrating fundamental data structures and file I/O.",
-    tools: ["Java", "OOP", "Generic Data Structures", "Unit Testing"],
-    githubUrl: "https://github.com/Momen-Suliman/Banking-System",
+      "A sample parser project that shows how to document coursework work, architecture notes, and implementation milestones.",
+    githubUrl: "https://github.com/your-name/compiler-basics",
     featured: false,
+    techStack: {
+      languages: ["Java"],
+      tools: ["Parser Design", "Compiler Theory"],
+    },
   },
   {
     id: 5,
-    title: "Micro:Bit Scripts",
+    title: "Micro:Bit Learning Lab",
     courseCode: "CPE1040",
     description:
-      "A collection of JavaScript programs for the Micro:Bit chip designed to teach coding and circuit fundamentals through hands-on learning progressions. Includes interactive visualizations and structured step-by-step exercises covering digital I/O, variables, loops, and hardware interaction.",
-    tools: ["JavaScript", "Micro:Bit", "Circuit Fundamentals"],
-    githubUrl: "https://github.com/Momen-Suliman/Micro-Bit-Scripts",
+      "A starter example for hardware-focused projects, with a simple layout for demos, visuals, and step-by-step walkthroughs.",
+    githubUrl: "https://github.com/your-name/microbit-learning-lab",
     featured: false,
+    techStack: {
+      languages: ["JavaScript"],
+      tools: ["Micro:Bit", "Circuit Fundamentals"],
+    },
   },
   {
     id: 6,
-    title: "Simple Chat-App",
+    title: "Realtime Chat Example",
     courseCode: "CS3700",
     description:
-      "A multithreaded Python chat application using UDP sockets and multicast communication. Features a GUI client and centralized server with a custom comma-separated messaging protocol for user registration, broadcasting, and listing active users.",
-    tools: [
-      "Python",
-      "Socket Programming",
-      "Multithreading",
-      "UDP/Multicast",
-      "GUI",
-    ],
-    githubUrl: "https://github.com/Momen-Suliman/Simple-Chat-App",
+      "A sample networking project that can be adapted into a full chat app, messaging platform, or multiplayer demo.",
+    githubUrl: "https://github.com/your-name/realtime-chat-example",
     featured: false,
-  },
-  {
-    id: 7,
-    title: "RESTful-API",
-    courseCode: "CS3700",
-    description:
-      "A RESTful web service for sharing cybersecurity incidents built with Flask and Python. Implements authentication, pagination, and advanced search/filtering capabilities with a SQLite database and full-featured client application.",
-    tools: ["Python", "Flask", "REST API", "SQLite", "Web Services"],
-    githubUrl: "https://github.com/Momen-Suliman/RESTful-API",
-    featured: false,
-  },
-  {
-    id: 8,
-    title: "Simple Web-Scrapper",
-    courseCode: "CS3700",
-    description:
-      "A Python web scraping project using BeautifulSoup (bs4) to extract country data from Scrape This Site. Demonstrates fundamental data mining techniques including HTML parsing, DOM tree navigation, and targeted element retrieval with JSON export.",
-    tools: [
-      "Python",
-      "BeautifulSoup",
-      "Web Scraping",
-      "Data Mining",
-      "JSONify",
-    ],
-    githubUrl: "https://github.com/Momen-Suliman/Simple-Web-Scrapper",
-    featured: false,
-  },
-  {
-    id: 9,
-    title: "Recursive Descent Parser",
-    courseCode: "CS3210",
-    description:
-      "A recursive-descent parser for a C-like language built in Java. Implements EBNF grammar parsing with support for variables, control flow (if/else, while loops), expressions with operator precedence, and print statements.",
-    tools: [
-      "Java",
-      "Parser Design",
-      "EBNF",
-      "Compiler Theory",
-      "StreamTokenizer",
-    ],
-    githubUrl: "https://github.com/Momen-Suliman/Recursive-Descent-Parser",
-    featured: false,
-  },
-  {
-    id: 10,
-    title: "RubyOnRails WebApp",
-    courseCode: "CS3710",
-    description:
-      "A Ruby on Rails and React (Vite) student management system featuring complex database relationships (one-to-one, one-to-many, many-to-many). Includes CRUD operations, custom foreign key displays, frontend design, and search functionality.",
-    tools: ["Ruby on Rails", "React", "Vite", "SQLite"],
-    githubUrl: "https://github.com/Momen-Suliman/RubyOnRails-WebApp",
-    featured: false,
-  },
-  {
-    id: 11,
-    title: "Online Voting Simulator",
-    courseCode: "CS3700",
-    description:
-      "A secure voting system implemented using Python's XML-RPC paradigm. Features rigorous server-side validation including registration verification, double-voting prevention, ballot integrity checks, and election phase management.",
-    tools: [
-      "Python",
-      "XML-RPC",
-      "Remote Procedure Calls",
-      "Security",
-      "Validation",
-    ],
-    githubUrl: "https://github.com/Momen-Suliman/Online-Voting-Simulator",
-    featured: false,
-  },
-  {
-    id: 12,
-    title: "Simple Client-Server Game",
-    courseCode: "CS3700",
-    description:
-      "A Python-based client/server number guessing game using UDP sockets. Features a state machine on the server (READY/BUSY) for managing single-player sessions with hint generation and attempt tracking.",
-    tools: ["Python", "Socket Programming", "UDP", "State Machines"],
-    githubUrl: "https://github.com/Momen-Suliman/Simple-ClientServer-Game",
-    featured: false,
+    techStack: {
+      languages: ["Python"],
+      tools: ["Socket Programming", "UDP", "Multithreading"],
+    },
   },
 ];

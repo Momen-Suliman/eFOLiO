@@ -3,7 +3,14 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { resume } from "@/data/resume";
 import { CardHeader } from "@/components/ui/card";
-import { Mail, Phone, Github, Linkedin, ExternalLink } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  Github,
+  Linkedin,
+  FileUser,
+  Captions,
+} from "lucide-react";
 
 export const ProfileHeader = () => {
   const info = resume.information[0];
@@ -22,9 +29,11 @@ export const ProfileHeader = () => {
             <Image
               src={`${info.portraitFile}`}
               alt="profile picture"
-              loading="eager"
-              fill
+              quality={75}
+              sizes="(max-width: 128px) 100vw, 128px"
               className="object-cover"
+              priority
+              fill
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center text-2xl font-semibold text-muted-foreground">
@@ -36,7 +45,7 @@ export const ProfileHeader = () => {
           )}
         </div>
 
-        <div dir="rtl" className="flex-1 min-w-0">
+        <div className="flex-1 min-w-0">
           <h1 className="text-3xl font-semibold text-foreground tracking-tight cursor-default">
             {fullName}
           </h1>
@@ -87,8 +96,18 @@ export const ProfileHeader = () => {
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-3 py-1.5 text-xs rounded-md border border-border bg-background hover:bg-accent transition-colors"
             >
-              <ExternalLink size={15} className="shrink-0" />
+              <FileUser size={15} className="shrink-0" />
               Resume PDF
+            </a>
+            <span className="h-6 w-px bg-border"></span>
+            <a
+              href={`${info.transcript}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-3 py-1.5 text-xs rounded-md border border-border bg-background hover:bg-accent transition-colors"
+            >
+              <Captions size={15} className="shrink-0" />
+              Transcript PDF
             </a>
           </section>
         </div>

@@ -6,7 +6,7 @@ import { projects } from "@/data/projects";
 import { resume } from "@/data/resume";
 import { motion } from "framer-motion";
 
-export default function HeroSection() {
+export function HeroSection() {
   //edit these constants to remove the X+ functionality
   const totalLeetcodes =
     leetcodes.length === 1 ? leetcodes.length : leetcodes.length - 1;
@@ -17,12 +17,11 @@ export default function HeroSection() {
 
   const name = resume.information[0].firstName;
   const githubUrl = resume.information[0].github;
-  const status = resume.information[0].status;
+  const status = resume.information[0].jobStatus;
   const title = resume.information[0].title;
 
-  // Add a description to your hero section here
   const hero_desc =
-    "Showcasing my academic journey, personal projects, & Full-Stack Apps—from Database Systems to Network Simulations.";
+    "This starter portfolio shell is ready for your own story. Replace the sample content, swap the sections, or rebuild them entirely until it feels like you.";
 
   return (
     <div className="bg-transparent">
@@ -32,9 +31,9 @@ export default function HeroSection() {
             className="mb-8 flex justify-center"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.65, ease: "easeOut" }}
+            transition={{ duration: 0.85, ease: "easeOut", delay: 0.5 }}
           >
-            <div className="relative flex flex-col items-center rounded-full px-3 py-1 text-sm/6 text-muted-foreground ring-1 ring-border hover:ring-ring transition-colors">
+            <div className="relative flex flex-col items-center rounded-full px-3 py-1 text-sm/6 text-muted-foreground ring-1 ring-logo hover:ring-ring transition-colors">
               <span className="hidden sm:inline">{status}</span>
               <span className="sm:hidden">{status}</span>{" "}
               <Link
@@ -44,7 +43,7 @@ export default function HeroSection() {
                 className="font-semibold text-logo"
               >
                 <span aria-hidden="true" className="absolute inset-0" />
-                See my Portfolio <span aria-hidden="true">→</span>
+                {"See my GitHub Portfolio"} <span aria-hidden="true">{"→"}</span>
               </Link>
             </div>
           </motion.div>
@@ -54,10 +53,10 @@ export default function HeroSection() {
               <motion.span
                 initial={{ opacity: 0, x: -80 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}
                 className="inline-block"
               >
-                Hi, I'm {name} {"—"}
+                {"Hi, I'm "} {name} {"—"}
               </motion.span>
               <motion.span
                 initial={{ opacity: 0, y: 16 }}
@@ -65,7 +64,7 @@ export default function HeroSection() {
                 transition={{
                   duration: 0.9,
                   ease: [0.22, 1, 0.36, 1],
-                  delay: 0.3,
+                  delay: 0.5,
                 }}
                 className="text-primary/50 font-light"
               >
@@ -80,7 +79,7 @@ export default function HeroSection() {
               transition={{
                 duration: 0.6,
                 ease: [0.22, 1, 0.36, 1],
-                delay: 0.35,
+                delay: 0.55,
               }}
               className="mt-8 text-lg font-normal text-pretty text-muted-foreground sm:text-xl/7"
             >
@@ -90,20 +89,20 @@ export default function HeroSection() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, ease: "easeIn", delay: 0.4 }}
+              transition={{ duration: 0.6, ease: "easeIn", delay: 0.55 }}
               className="mt-10 flex items-center justify-center gap-x-6"
             >
               <Link
                 href="/projects"
                 className="rounded-full bg-linear-to-r from-ring to-logo px-3.5 py-2.5 text-sm font-semibold text-primary-foreground shadow-xs hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring transition-opacity"
               >
-                View Projects
+                {"View Projects"}
               </Link>
               <Link
                 href="/resume"
                 className="text-sm/6 font-semibold text-foreground hover:text-ring transition-colors"
               >
-                My Resume <span aria-hidden="true">→</span>
+                {"My Resume"} <span aria-hidden="true">→</span>
               </Link>
             </motion.div>
 

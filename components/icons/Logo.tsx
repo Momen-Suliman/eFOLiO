@@ -7,19 +7,34 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
+export const brandLogo = "eF\u00A0O\u00A0L\u00A0iO";
+export const brandName = "eFOLiO";
+export const brandProduct = "eFOLiO";
+
 // Change Logo design here
 export function Logo({ className = "text-4xl" }: { className?: string }) {
   return (
     <Link href="/" className="group">
       <h1
-        className={`
-                ${geistSans.variable} 
-                ${className} 
-                font-sans font-extralight text-logo transition-colors hover:text-primary
-            `}
+        className={` 
+          ${geistSans.variable} 
+          ${className} 
+          font-sans 
+          font-extralight 
+          hover:text-logo 
+          transition-colors 
+          bg-linear-to-r 
+          from-foreground 
+          to-primary 
+          bg-clip-text 
+          text-transparent
+          whitespace-nowrap
+          overflow-hidden
+          text-ellipsis
+        `}
       >
         {/*Visible Logo design*/}
-        <span aria-hidden="true">eF O L iO</span>
+        <span aria-hidden="true">{brandLogo}</span>
 
         {/*Screen reader Pronunciation*/}
         <span className="sr-only">e-folio</span>

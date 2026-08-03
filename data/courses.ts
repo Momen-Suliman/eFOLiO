@@ -1,3 +1,4 @@
+//populate the course object with your own courses. If your school portal provide an API, you can fetch the data to the respective interface values.
 export interface Course {
   id: number;
   code: string;
@@ -9,7 +10,6 @@ export interface Course {
   image: string;
 }
 
-// Populate the data objects below.
 export const courses: Course[] = [
   {
     id: 1,
@@ -19,18 +19,18 @@ export const courses: Course[] = [
     semester: "Spring 2022",
     category: "Computer Engineering",
     description:
-      "Applied the engineering design process & mathematical modeling to analyze raw data. Accomplished visual results through manipulating Micro Bit code & using different component orientation along with varying circuit formations.",
+      "A starter example showing how to highlight coursework, key concepts, and hands-on learning outcomes in a polished card layout.",
     image: "/images/cpe1040.png",
   },
   {
     id: 2,
     code: "CS3250",
-    name: "Software Dev. Methods, & Tools",
+    name: "Software Development Methods & Tools",
     grade: "A",
     semester: "Spring 2025",
     category: "Computer Science",
     description:
-      "Learned the basics of large-scale software development, including life cycles, object-oriented techniques, and automation. Practiced TDD/BDD testing, error analysis, and performance tuning through a significant group project.",
+      "Replace this sample description with your own course work, major projects, and lessons learned.",
     image: "/images/cs3250.jpg",
   },
   {
@@ -41,7 +41,7 @@ export const courses: Course[] = [
     semester: "Fall 2025",
     category: "CS Elective",
     description:
-      "Acquired an understanding of network applications. Focused on building reliable communication software, optimizing routing, & managing client/server architectures to ensure error-free, ordered data transmission.",
+      "Use this card to showcase network theory, teamwork experience, or a project that demonstrates distributed systems.",
     image: "/images/cs3700.jpg",
   },
   {
@@ -52,7 +52,7 @@ export const courses: Course[] = [
     semester: "Fall 2025",
     category: "CS Elective",
     description:
-      "Developed full-stack web applications using modern frameworks for rapid prototyping & deployment. Focused on building responsive, cross-platform application compatible with desktop, tablet, & mobile browsers.",
+      "A good example of a course card that can link to a project, feature a grade badge, and describe a practical build outcome.",
     image: "/images/cs3710.png",
   },
   {
@@ -63,7 +63,7 @@ export const courses: Course[] = [
     semester: "Summer 2025",
     category: "CS Elective",
     description:
-      "Designed and managed relational databases using SQL, normalization, and ER modeling. Developed stored procedures and explored relational algebra and semi-structured data to ensure efficient data storage and retrieval.",
+      "This sample content makes it easy to show databases, SQL work, schema design, and other technical highlights.",
     image: "/images/cs3810.jpg",
   },
   {
@@ -74,7 +74,7 @@ export const courses: Course[] = [
     semester: "Fall 2025",
     category: "Computer Science",
     description:
-      "Analyzed efficient algorithms using Big O notation. Solved complex computing problems via divide-and-conquer, greedy solutions, & dynamic programming, to optimize time & computational resource usage.",
+      "Swap this copy with your own algorithm study notes, problem-solving experience, or advanced coursework takeaways.",
     image: "/images/cs4050.png",
   },
 ];

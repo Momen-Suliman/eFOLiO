@@ -1,7 +1,10 @@
+//populate this section as you would with an online form.
+import { skills, type Skills } from "@/data/skills";
+
 export interface Resume {
   information: Information[];
   education: Education[];
-  skills: Skills[];
+  skills: Skills;
 }
 
 export interface Information {
@@ -13,9 +16,10 @@ export interface Information {
   linkedin: string;
   github: string;
   resumeFile: string;
+  transcript: string;
   portraitFile?: string;
   summary: string;
-  status: string;
+  jobStatus: string;
   footerNote: string;
 }
 
@@ -26,72 +30,39 @@ export interface Education {
   graduation: string;
 }
 
-export interface Skills {
-  category: string;
-  items: string[];
-}
-
-// Populate the data objects below.
 export const resume: Resume = {
   information: [
     {
-      firstName: "Momen",
-      lastName: "Suliman",
-      title: "CS Student & Developer",
-      email: "personal.momen@gmail.com",
-      phone: "720-751-3617",
+      firstName: "Ada",
+      lastName: "Lovelace",
+      title: "Senior Full-Stack Consultant",
+      email: "adalove@gmail.com",
+      phone: "(919) 110-0110",
       linkedin: "https://www.linkedin.com",
-      github: "https://github.com/Momen-Suliman",
-      resumeFile: "/Momen_Suliman_Resume.pdf",
+      github: "https://github.com/",
+      transcript: "/Transcript.pdf",
+      resumeFile: "/Resume.pdf",
       portraitFile: "/images/portrait.jpg",
       summary:
-        "Independently architected and documented a full open-source project from the ground up — no team, no handholding, just a clear vision and the discipline to build it. Stepped up as the de facto lead on a team project, coordinating schema, code, and testing across contributors to deliver a polished result to senior colleagues.",
-      status: "Open to Internships & Full-Time Positions.",
+        "This starter portfolio shows one possible layout for a personal site. Replace the sample story with your own background, projects, and goals so the experience becomes truly yours.",
+      jobStatus: "Open to Opportunities",
       footerNote:
-        "Currently looking to specialize in entry-level Full-Stack Development, Backend Architecture, or Database Systems.",
+        "Use this shell as a foundation and customize every section until it reflects your identity.",
     },
   ],
   education: [
     {
-      institution: "Metropolitan State University of Denver",
+      institution: "Example University",
       degree: "Bachelor of Science",
       fieldOfStudy: "Computer Science",
-      graduation: "Graduating May, 2026",
+      graduation: "Expected 2027",
     },
     {
-      institution: "University of Colorado Boulder",
-      degree: "Bachelor of Science",
-      fieldOfStudy: "Computer Engineering",
-      graduation: "Time: 2017-2018",
+      institution: "Example Community College",
+      degree: "Associate of Arts",
+      fieldOfStudy: "Mathematics",
+      graduation: "Completed 2024",
     },
   ],
-  skills: [
-    {
-      category: "Programming Languages",
-      items: ["Python", "JavaScript", "Java", "SQL"],
-    },
-    {
-      category: "Frameworks & Libraries",
-      items: [
-        "React",
-        "Next.js 15",
-        "Flask",
-        "Tailwind CSS",
-        "Framer Motion",
-        "Ruby on Rails",
-      ],
-    },
-    {
-      category: "Tools & Technologies",
-      items: [
-        "Git",
-        "GitHub Actions",
-        "JUnit 5",
-        "Node.js",
-        "PostgreSQL",
-        "SQLite",
-        "MySQL",
-      ],
-    },
-  ],
+  skills: skills,
 };

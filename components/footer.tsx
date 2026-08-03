@@ -2,11 +2,12 @@
 import { Logo } from "@/components/icons/Logo";
 import { ClipboardMail } from "@/components/icons/clipboard-mail";
 import { resume } from "@/data/resume";
-import { Linkedin, Check, FileUser } from "lucide-react";
+import { Linkedin, Check, FileUser, Captions } from "lucide-react";
 import { useState } from "react";
 import { motion } from "framer-motion";
 
 export function Footer() {
+  const originalAuthor: string = "Momen Suliman"
   const currentYear = new Date().getFullYear();
   const email = resume.information[0].email;
   const fullName: string = `${resume.information[0].firstName} ${resume.information[0].lastName}`;
@@ -17,14 +18,15 @@ export function Footer() {
     {
       icon: Linkedin,
       label: "LinkedIn",
+      title: "LinkedIn",
       href: `${resume.information[0].linkedin}`,
     },
   ];
 
   /*
-   * CROSS-BROWSER CLIPBOARD LOGIC
-   * navigator.clipboard is the modern standard but requires HTTPS.
-   * The 'textArea' fallback ensures copying works on older browsers or local dev.
+   CROSS-BROWSER CLIPBOARD LOGIC
+   navigator.clipboard is the modern standard but requires HTTPS.
+   The 'textArea' fallback ensures copying works on older browsers or local dev.
    */
   const copyEmail = () => {
     if (navigator.clipboard && window.isSecureContext) {
@@ -62,6 +64,7 @@ export function Footer() {
           <div className="flex items-center gap-3 py-2">
             <a
               href={`${resume.information[0].resumeFile}`}
+              title="Resume"
               aria-label="view external resume"
               target="_blank"
               rel="noopener noreferrer"
@@ -89,6 +92,7 @@ export function Footer() {
                 <a
                   key={social.label}
                   href={social.href}
+                  title={social.title}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex h-9 w-9 items-center justify-center rounded-md border border-border bg-secondary/50 transition-colors hover:bg-accent hover:border-accent-foreground/20 disabled:opacity-50"
@@ -98,6 +102,18 @@ export function Footer() {
                 </a>
               );
             })}
+
+            <a
+              href={`${resume.information[0].transcript}`}
+              title="Transcript"
+              aria-label="view external transcript"
+              target="_blank"
+              rel="noopener noreferrer"
+              dir="ltr"
+              className="flex h-9 w-9 items-center justify-center rounded-md border border-border bg-secondary/50 transition-colors hover:bg-accent hover:border-accent-foreground/20 disabled:opacity-50"
+            >
+              <Captions className="h-4 w-4 text-foreground" />
+            </a>
           </div>
           <div className="h-px w-30 bg-border my-2"></div>
 
@@ -105,9 +121,8 @@ export function Footer() {
             {footerNote}
           </p>
           <p className="text-[0.70rem] text-center justify-center text-foreground/65">
-            Copyright © {currentYear} {fullName}. All Content, Projects, &
-            Original Materials are protected. All Rights Reserved Under PolyForm
-            Noncommercial License 1.0.0.
+            Copyright © {currentYear} {fullName}. All rights reserved for modifications and augmented materials.
+            Original codebase copyright © {originalAuthor} and licensed under the PolyForm Noncommercial License 1.0.0.
           </p>
         </div>
       </div>

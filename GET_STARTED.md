@@ -34,7 +34,7 @@ Before you begin, ensure you have the following installed:
     git clone https://github.com/Momen-Suliman/eFOLiO.git
     cd efolio
     ```
-2.  **Clone the repository:**
+2.  **Re-point the repository:**
     ```bash
     rm -rf .git
     git init

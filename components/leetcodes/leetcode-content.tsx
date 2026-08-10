@@ -9,30 +9,28 @@ export function LeetcodesContent() {
   const [selectedId, setSelectedId] = useState<number | null>(null);
 
   return (
-    <div className="container mx-auto px-6 py-12">
-      <div className="grid grid-cols-1 lg:grid-cols-[50%_50%] gap-6">
-        <ProblemList
-          selectedId={selectedId}
-          onSelect={(id) => setSelectedId(id)}
-        />
+    <div className="grid grid-cols-1 lg:grid-cols-[50%_50%] gap-6">
+      <ProblemList
+        selectedId={selectedId}
+        onSelect={(id) => setSelectedId(id)}
+      />
 
-        <AnimatePresence mode="wait">
-          <div className="space-y-6">
-            {selectedId ? (
-              <>
-                <ProblemDetail
-                  problemId={selectedId}
-                  onBack={() => setSelectedId(null)}
-                />
-              </>
-            ) : (
-              <>
-                <StatsDashboard />
-              </>
-            )}
-          </div>
-        </AnimatePresence>
-      </div>
+      <AnimatePresence mode="wait">
+        <div className="space-y-6">
+          {selectedId ? (
+            <>
+              <ProblemDetail
+                problemId={selectedId}
+                onBack={() => setSelectedId(null)}
+              />
+            </>
+          ) : (
+            <>
+              <StatsDashboard />
+            </>
+          )}
+        </div>
+      </AnimatePresence>
     </div>
   );
 }

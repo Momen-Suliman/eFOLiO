@@ -43,7 +43,8 @@ export function HeroSection() {
                 className="font-semibold text-logo"
               >
                 <span aria-hidden="true" className="absolute inset-0" />
-                {"See my GitHub Portfolio"} <span aria-hidden="true">{"→"}</span>
+                {"See my GitHub Portfolio"}{" "}
+                <span aria-hidden="true">{"→"}</span>
               </Link>
             </div>
           </motion.div>
@@ -53,7 +54,11 @@ export function HeroSection() {
               <motion.span
                 initial={{ opacity: 0, x: -80 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}
+                transition={{
+                  duration: 1.2,
+                  ease: [0.22, 1, 0.36, 1],
+                  delay: 0.5,
+                }}
                 className="inline-block"
               >
                 {"Hi, I'm "} {name} {"—"}

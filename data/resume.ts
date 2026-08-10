@@ -35,7 +35,7 @@ export const resume: Resume = {
     {
       firstName: "Ada",
       lastName: "Lovelace",
-      title: "Senior Full-Stack Consultant",
+      title: "Backend Junior Developer",
       email: "adalove@gmail.com",
       phone: "(919) 110-0110",
       linkedin: "https://www.linkedin.com",

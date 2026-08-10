@@ -38,14 +38,14 @@ You are not locked into the current layout, content, or structure. You can add, 
 
 ### 🛠 Tech-Stack & Tools
 
-| Domain          | Technology                                                          | Implementation Detail                                      |
-| :-------------- | :------------------------------------------------------------------ | :--------------------------------------------------------- |
-| **Framework**   | [Next.js 16 (App Router)](https://nextjs.org)                       | App Router and dynamic metadata.                         |
-| **Language**    | [TypeScript](https://www.typescriptlang.org)                        | Strict typing for data structures and component props.     |
-| **Styling**     | [Tailwind CSS v4](https://tailwindcss.com)                          | Utility-first styling with a modern build pipeline.       |
-| **UI/UX**       | [Shadcn UI](https://ui.shadcn.com/docs)                             | Accessible UI primitives for a polished presentation.    |
-| **Performance** | [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview) | Performance testing for content and component load.       |
-| **Deployment**  | [Vercel](https://vercel.com)                                        | Simple deployment path for a personal portfolio.         |
+| Domain          | Technology                                                          | Implementation Detail                                  |
+| :-------------- | :------------------------------------------------------------------ | :----------------------------------------------------- |
+| **Framework**   | [Next.js 16 (App Router)](https://nextjs.org)                       | App Router and dynamic metadata.                       |
+| **Language**    | [TypeScript](https://www.typescriptlang.org)                        | Strict typing for data structures and component props. |
+| **Styling**     | [Tailwind CSS v4](https://tailwindcss.com)                          | Utility-first styling with a modern build pipeline.    |
+| **UI/UX**       | [Shadcn UI](https://ui.shadcn.com/docs)                             | Accessible UI primitives for a polished presentation.  |
+| **Performance** | [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview) | Performance testing for content and component load.    |
+| **Deployment**  | [Vercel](https://vercel.com)                                        | Simple deployment path for a personal portfolio.       |
 
 ---
 

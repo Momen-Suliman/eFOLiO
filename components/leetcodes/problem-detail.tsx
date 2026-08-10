@@ -107,7 +107,7 @@ export const ProblemDetail = ({ problemId, onBack }: ProblemDetailProps) => {
                   tabIndex={-1}
                   className="flex items-center gap-2 px-3 py-1.5 text-xs rounded-md border border-border bg-background text-foreground transition-colors pointer-events-none"
                 >
-                  {"Python3"}
+                  {selectedProblemData?.language}
                 </button>
                 <button
                   onClick={copyCode}

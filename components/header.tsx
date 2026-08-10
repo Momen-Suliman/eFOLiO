@@ -25,7 +25,6 @@ export function Header() {
   const pathname = usePathname();
   const [hoveredPath, setHoveredPath] = useState<string | null>(null);
   const [sheetOpen, setSheetOpen] = useState(false);
-
   const gitHubLinks = [
     { icon: Github, label: "GitHub", href: `${resume.information[0].github}` },
   ];
@@ -55,10 +54,11 @@ export function Header() {
                           className="relative cursor-pointer px-4 py-2 text-sm font-medium transition-colors"
                         >
                           <span
-                            className={`relative cursor-pointer z-10 ${isActive
-                              ? "text-primary-foreground"
-                              : "text-foreground hover:text-primary"
-                              }`}
+                            className={`relative cursor-pointer z-10 ${
+                              isActive
+                                ? "text-primary-foreground"
+                                : "text-foreground hover:text-primary"
+                            }`}
                           >
                             {link.name}
                           </span>

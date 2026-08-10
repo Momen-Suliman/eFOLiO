@@ -7,7 +7,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 
 export function Footer() {
-  const originalAuthor: string = "Momen Suliman"
+  const originalAuthor: string = "Momen Suliman";
   const currentYear = new Date().getFullYear();
   const email = resume.information[0].email;
   const fullName: string = `${resume.information[0].firstName} ${resume.information[0].lastName}`;
@@ -121,8 +121,10 @@ export function Footer() {
             {footerNote}
           </p>
           <p className="text-[0.70rem] text-center justify-center text-foreground/65">
-            Copyright © {currentYear} {fullName}. All rights reserved for modifications and augmented materials.
-            Original codebase copyright © {originalAuthor} and licensed under the PolyForm Noncommercial License 1.0.0.
+            Copyright © {currentYear} {fullName}. All rights reserved for
+            modifications and augmented materials. Original codebase copyright ©{" "}
+            {originalAuthor} and licensed under the PolyForm Noncommercial
+            License 1.0.0.
           </p>
         </div>
       </div>

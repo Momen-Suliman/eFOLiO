@@ -15,6 +15,7 @@ export interface Leetcode {
   description: string;
   solution: string;
   leetcodeUrl: string;
+  language: string;
   code: string;
 }
 
@@ -30,6 +31,7 @@ export const leetcodes: Leetcode[] = [
     solution:
       "Use a hash map to remember values you have already seen and quickly find the matching complement.",
     leetcodeUrl: "https://leetcode.com/problems/two-sum/",
+    language: "Java",
     code: `class Solution:
     def twoSum(self, nums, target):
         seen = {}
@@ -51,6 +53,7 @@ export const leetcodes: Leetcode[] = [
     solution:
       "Push opening characters onto a stack and pop them when the matching closing symbol appears.",
     leetcodeUrl: "https://leetcode.com/problems/valid-parentheses/",
+    language: "Python3",
     code: `class Solution:
     def isValid(self, s: str) -> bool:
         stack = []
@@ -73,6 +76,7 @@ export const leetcodes: Leetcode[] = [
     solution:
       "Use depth-first traversal to visit each node and keep track of the path as you move through the tree.",
     leetcodeUrl: "https://leetcode.com/problems/binary-tree-inorder-traversal/",
+    language: "Ruby",
     code: `class Solution:
     def inorderTraversal(self, root):
         result = []
@@ -95,6 +99,7 @@ export const leetcodes: Leetcode[] = [
     solution:
       "Traverse each island using DFS or BFS and mark visited cells so each connected component is counted once.",
     leetcodeUrl: "https://leetcode.com/problems/number-of-islands/",
+    language: "JavaScript",
     code: `from collections import deque
 
 class Solution:
